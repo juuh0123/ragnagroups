@@ -11,5 +11,5 @@ Projeto, blog, tutorial, tudo sobre ragnarok
 - [Criação do sistema de Post's]
 <h2>Ragnagroups</h2>
 
-
+<input type="text" name="nome" />
 
