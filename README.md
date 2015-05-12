@@ -1,3 +1,4 @@
+<body style="background:#cdcdcd">
 # ragnagroups
 Projeto, blog, tutorial, tudo sobre ragnarok
 
@@ -12,4 +13,4 @@ Projeto, blog, tutorial, tudo sobre ragnarok
 <h2>Ragnagroups</h2>
 
 <input type="text" name="nome" />
-
+<body>
