@@ -14,7 +14,7 @@ Projeto, blog, tutorial, tudo sobre ragnarok
 - [Validação do formulário de cadastrado sem refresh de página com ajax e jquery]
 - [Desenvolvendo script do banco de dados]
 
-<h2>Ragnagroups</h2>
+<h2>#KillRagMaster</h2>
 
 <ul>
   <li>Tópico 1</li>
