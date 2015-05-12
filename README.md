@@ -13,7 +13,7 @@ Projeto, blog, tutorial, tudo sobre ragnarok
 - [Desenvolvimento do layout principal]
 - [Validação do formulário de cadastrado sem refresh de página com ajax e jquery]
 - [Desenvolvendo script do banco de dados]
-- 
+
 <h2>Ragnagroups</h2>
 
 <ul>
