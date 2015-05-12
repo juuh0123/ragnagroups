@@ -1,5 +1,5 @@
 <body style="background:#cdcdcd">
-# ragnagroups
+# Ragnagroups
 Projeto, blog, tutorial, tudo sobre ragnarok
 
 
@@ -10,7 +10,15 @@ Projeto, blog, tutorial, tudo sobre ragnarok
 - [Cadastro de usuário]
 - [Login do sistema e segurança]
 - [Criação do sistema de Post's]
+- [Desenvolvimento do layout principal]
+- [Validação do formulário de cadastrado sem refresh de página com ajax e jquery]
+- [Desenvolvendo script do banco de dados]
+- 
 <h2>Ragnagroups</h2>
 
-<input type="text" name="nome" />
+<ul>
+  <li>Tópico 1</li>
+  <li>Tópico 2</li>
+  <li>Tópico 3</li>
+</ul>
 <body>
