@@ -1,0 +1,79 @@
+a:hover{
+	color: #E74F4E;
+	outline: none;
+}
+body{
+	font-family: 'raleway-regular';
+	margin: 0px;
+	padding: 0px;
+}
+.billboard{
+	width: 100%;
+    height: 710px;
+   	position: absolute;
+	opacity: 0.8;
+	font-weight: bold;
+}
+.billboard.light{
+    background: url('../image/prontera.jpg') no-repeat;        
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+     font-weight: bold;
+}
+.billboard .shadow{
+    position: absolute;
+    width: 100%;
+    height: 142px;
+    bottom: 0;
+    left: 0;
+    margin-bottom: -20px;
+    background: url('../image/shadow.png') repeat-x;
+    font-weight: bold;
+}
+#sidebar{
+	width: 860px;
+    border: 1px solid green;
+    background-color: #8AB899;
+    background-image: linear-gradient(#8AB899, #BBC925);
+    border-radius: 6px;
+    box-shadow: 0 1px 1px #777;
+    position:absolute;
+    margin: 22% 0% 0% 22%;
+}
+ul a{
+	list-style: none;
+	color: #FFF;
+	text-decoration: none; 
+	display: inline-block;
+	font: inherit;
+    font-weight: bold;
+    padding: 0 10px;
+	border-right: 4px solid #FFF;
+	font: 26px verdana, arial, helvetiva, sans-serif;
+}    
+ul li:hover{
+	text-decoration: underline;
+	color: #e74f4e;
+}
+#ultimo{
+	border-right: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
