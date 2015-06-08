@@ -1,0 +1,2 @@
+font: 400 16px 'Roboto Condensed', Arial;
+
