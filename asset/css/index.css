@@ -1,73 +1,141 @@
-a:hover{
-	color: #E74F4E;
-	outline: none;
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+/* Styles */
 }
+@media screen and (min-width: 768px){}
+@media screen and (min-width: 992px){
 body{
-	font-family: 'raleway-regular';
-	margin: 0px;
-	padding: 0px;
+	background: url('../image/prontera.jpg') no-repeat;
+   	background-size: cover;
+    background-position: center;
+	width: 100%;
+    height: 100%
+	font-family: "Open Sans", Helvetica, sans-serif, arial; /*definição da fonte geral incorporada do Google Fonts*/
+    font-size: 1.125em; /*tamanho da fonte 18px/16;*/
+    xfont-weight: 300; /*indica que a fonte está coonfigurada como Open Sans Light*/
+    line-height: 1.2222222222em;/*22px/18;altura da linha*/
+    text-align: left; /*alinhando o texto à esquerda*/
+    text-shadow: 2px 2px 0px #000; /*sombreamento para as fontes do site*/
 }
-img{
-	max-width: 100%;
-	max-height: 100%;
+.center{
+     margin: 0 auto; /*centralizando o conteúdo no navegador*/
+     max-width:1200px; /*largura máxima do layout*/
+     width: 90% /*1200px; largura do layout*/        
+}
+/*.clearfix usado para adicionar um espaço vazio antes e depois dos elementos
+  evitando que os floats se aglomerem.
+*/
+.clearfix:before, .clearfix:after {
+    content: " ";
+    display: table;
+}
+.clearfix:after {
+    clear: both;
+}
+.clearfix {
+    *zoom: 1;
+}
+img, picture, video, embed {
+    max-width: 100%; /*define a largura máxima em até 100%*/
+}	max-height: 100%
+#wrap{
+	line-height: 1.6;
 }
 .billboard{
 	width: 100%;
-    height: 640px;
-   	position: absolute;
-	opacity: 0.8;
-	font-weight: bold;
+	xheight: 92.9%;
+	position: absolute;
+	bottom: 0;
 }
 .billboard.light{
-    background: url('../image/prontera.jpg') no-repeat;        
     background-size: cover;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-     font-weight: bold;
+    background-position: center;
+   	font-weight: bold;
 }
-.billboard .shadow{
+.shadow{
     position: absolute;
     width: 100%;
-    height: 142px;
+    height: 40%;
     bottom: 0;
     left: 0;
-    margin-bottom: -20px;
     background: url('../image/shadow.png') repeat-x;
-    font-weight: bold;
 }
 #sidebar{
+	width: 890px;/*890px % 1366px * 100 = 65.15373352855051%*/
     border: 1px solid green;
     background-color: #8AB899;
     background-image: linear-gradient(#8AB899, #BBC925);
     border-radius: 6px;
     box-shadow: 0 1px 1px #777;
-    position: absolute;
-    margin: 22% 0% 0% 22%;
-    width: 62.5833%;
-    opacity: none;
+    xmargin: 23% 0% 0% 23%;
+    margin: 0 auto;
+    margin-bottom: 200px;
+    opacity: 0.9;
 }
 ul a{
 	list-style: none;
 	color: #FFF;
 	text-decoration: none; 
 	display: inline-block;
-	font: inherit;
-    font-weight: bold;
-    padding: 0 10px;
-	border-right: 4px solid #FFF;
-	font: 26px verdana, arial, helvetiva, sans-serif;
+    /*padding: 0 10px;*/
+    padding: 0 .7%;
+	border-right: 0.15em solid #FFF;
+	font: 1.625em verdana, arial, helvetiva, sans-serif;
 }    
 ul li:hover{
-	text-decoration: underline;
-	color: #e74f4e;
+	color:#FE5E41;
+    text-decoration:underline; /*inseri uma linha sob o link*/
+    text-shadow:none; /*retira a sombra da fonte*/
 }
 #ultimo{
 	border-right: none;
 }
-
-
-
+.copyright{
+	color: #BBC925;
+	text-decoration: none;
+}
+.copyright:hover{
+	color: #00CCFF;
+	text-decoration: underline;
+}
+footer{
+	position: absolute;
+	font: 0.75em verdana, arial, helvetiva, sans-serif;
+	color: #777777;
+	text-align: center;
+	width: 100%;
+    bottom: 0;
+}
+/*
+1200px – Desktops, notebooks com monitores widescreen
+***********************************************************/
+@media screen and (max-width=1200px){
+      
+}
+/*
+960px – Tablets no formato paisagem e alguns monitores mais antigos
+***********************************************************/
+@media screen and (max-width=960px){
+      
+}
+/*
+768px – Tablets no formato retrato, como o iPad
+***********************************************************/
+@media screen and (max-width=768px){
+      
+}
+/*
+480px – Smartphones no formato paisagem com tela pequena
+***********************************************************/
+@media screen and (max-width=480px){
+      
+}
+/*
+320px – Smartphones no formato retrato com tela pequena
+***********************************************************/
+@media screen and (max-width=320px){
+      
+}
 
 
 

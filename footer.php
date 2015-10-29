@@ -3,7 +3,7 @@ protegeArquivo(basename(__FILE__));
 ?>
 			</div><!--wrap-content-->
 				<div id="footer">
-					<p>Painel de Administração | Desenvolvido por RBTech.info</p>
+					<p>Ragnagroups | Todos os direitos reservados.</p>
 				</div><!--footer-->
 		</div><!--wrapper-->
 	</body>

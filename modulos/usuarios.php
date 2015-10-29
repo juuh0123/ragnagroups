@@ -3,18 +3,19 @@ require_once(dirname(dirname(__FILE__))."/funcoes.php");
 protegeArquivo(basename(__FILE__));
 loadJS('jquery-validate');
 loadJS('jquery-validate-messages');
- //$teste = dirname(__FILE__);
- //echo $teste;
+loadCSS('login');
+//$teste = dirname(__FILE__);
+//echo $teste;
 	switch($tela):
 		case 'login':
 			$sessao = new sessao();
-			if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']) redireciona('painel.php');
+			if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']) redireciona('home.php');
 			if(isset($_POST['logar']))://logar é do form
 				$user = new usuarios();
 				$user->setValor('login', $_POST['usuario']);//campo do form
 				$user->setValor('senha', $_POST['senha']);
 				if($user->doLogin($user)):
-					redireciona('painel.php');
+					redireciona('home.php');
 				else:
 					redireciona('?erro=2');	
 				endif;	
@@ -30,20 +31,22 @@ loadJS('jquery-validate-messages');
 					});
 				});
 			</script>
-			<div id="loginForm">
+			<!--<div id="loginForm">-->
+				<div class="login-card">
+    			<h1>Log-in</h1><br>
 				<form class="userForm" method="post" action="">
-					<fieldset>
+					<!--<fieldset>
 						<legend>Acesso restrito, identifique-se</legend>
 						<ul>
 							<li>
-								<label for="usuario">Usuário:</label>
-								<input type="text" size="35" name="usuario" value="<?php //echo $_POST['usuario']; ?>" />
+								<label for="usuario">Usuário:</label>-->
+								<input type="text" size="35" name="usuario" placeholder="Usuário" value="<?php //echo $_POST['usuario']; ?>" />
 							</li>
 							<li>
-								<label for="senha">Senha:</label>
-								<input type="password" size="35" name="senha" value="<?php //echo $_POST['senha']; ?>" />
+								<!--<label for="senha">Senha:</label>-->
+								<input type="password" size="35" name="senha" placeholder="senha" value="<?php //echo $_POST['senha']; ?>" />
 							</li>
-							<li class="center"><input class="radius5" type="submit" name="logar" value="Login"/></li>
+							<li class="center"><input class="radius5" class="login login-submit" type="submit" name="logar" value="Login"/></li>
 						</ul>
 						<?php
 							@$erro = $_GET['erro'];
@@ -59,7 +62,10 @@ loadJS('jquery-validate-messages');
 									break;
 							endswitch;
 						?>
-					</fieldset>
+					<!--</fieldset>-->
+					 <div class="login-help">
+   						 <a href="#">Registre-se</a> • <a href="#">Esqueceu a senha?</a>
+  					</div>
 				</form>
 			</div>	
 			<?php

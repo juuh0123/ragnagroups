@@ -47,7 +47,7 @@
 			endif;	
 		endif;	
 	}//loadModulo
-	function protegeArquivo($nomeArquivo, $redirPara = 'index.php?erro=3'){
+	function protegeArquivo($nomeArquivo, $redirPara = 'home.php?erro=3'){
 		$url = $_SERVER["PHP_SELF"];
 		if(preg_match("/$nomeArquivo/i", $url)):
 			//redireciona para outra url
@@ -58,7 +58,9 @@
 		header("Location: ".BASEURL.$url);
 	}//redireciona
 	function codificaSenha($senha){
-		return md5($senha);
+		$senha = md5($senha);	
+		$senha = sha1($senha);	
+		return $senha;
 	}//codificaSenha
 	function verificaLogin(){
 		$sessao = new sessao();
