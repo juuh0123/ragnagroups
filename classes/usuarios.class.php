@@ -22,7 +22,9 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 		}//construct
 	
 		public function doLogin($objeto){
-			$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".codificaSenha($objeto->getValor('senha'))."' AND
+			//$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".codificaSenha($objeto->getValor('senha'))."' AND
+			//ativo='s'"; DEVO ATIVAR DEPOIS E EXCLUIR A LINHA DE BAIXO, SÓ PARA NAO CODIFICAR MINHA SENHA FEITA NA MAO
+			$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".$objeto->getValor('senha')."' AND
 			ativo='s'";
 			$this->select($objeto);
 			$sessao = new sessao();

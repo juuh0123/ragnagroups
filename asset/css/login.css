@@ -1,105 +1,170 @@
-/*@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);*/
-
+/* Smartphones (portrait and landscape) ----------- */
+@media  screen and (max-width : 480px) {
+/* Styles */
+	body{
+		background: #3F2860;
+	}
+}
+@media screen and (min-width : 480px) and (max-width: 768px){
+/*Tablets até 960*/
+	body{
+		background: #555555;
+	}	
+}
+@media screen and (min-width: 992px){
+@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 body {
-  background: url(https://dl.dropboxusercontent.com/u/23299152/Wallpapers/wallpaper-22705.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  font-family: 'Roboto', sans-serif;
+    background: url('../../asset/image/19.jpg') no-repeat fixed center center;
+    background-size: cover;
+    font-family: Montserrat;
 }
 
-.login-card {
-  padding: 40px;
-  width: 274px;
-  background-color: #F7F7F7;
-  margin: 0 auto 10px;
-  border-radius: 2px;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
+.logo {
+    width: 213px;
+    height: 36px;
+    xbackground: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
+    margin: 40px auto;
 }
 
-.login-card h1 {
-  font-weight: 100;
-  text-align: center;
-  font-size: 2.3em;
+.login-block {
+    width: 320px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    border-top: 5px solid #ff656c;
+    margin: 0 auto;
+    margin-top: 100px;
 }
 
-.login-card input[type=submit] {
-  width: 100%;
-  display: block;
-  margin-bottom: 10px;
-  position: relative;
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    xtext-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
 }
 
-.login-card input[type=text], input[type=password] {
-  height: 44px;
-  font-size: 16px;
-  width: 100%;
-  margin-bottom: 10px;
-  -webkit-appearance: none;
-  background: #fff;
-  border: 1px solid #d9d9d9;
-  border-top: 1px solid #c0c0c0;
-  /* border-radius: 2px; */
-  padding: 0 8px;
-  box-sizing: border-box;
-  -moz-box-sizing: border-box;
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 16px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
 }
 
-.login-card input[type=text]:hover, input[type=password]:hover {
-  border: 1px solid #b9b9b9;
-  border-top: 1px solid #a0a0a0;
-  -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+.login-block input#username {
+    background: #fff url('../../asset/image/user.png') 20px top no-repeat;
+    background-size: 16px 80px;
 }
 
-.login {
-  text-align: center;
-  font-size: 14px;
-  font-family: 'Arial', sans-serif;
-  font-weight: 700;
-  height: 36px;
-  padding: 0 8px;
-/* border-radius: 3px; */
-/* -webkit-user-select: none;
-  user-select: none; */
+.login-block input#username:focus {
+    background: #fff url('../../asset/image/user.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
 }
 
-.login-submit {
-  /* border: 1px solid #3079ed; */
-  border: 0px;
-  color: #fff;
-  text-shadow: 0 1px rgba(0,0,0,0.1); 
-  background-color: #4d90fe;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#4787ed)); */
+.login-block input#password {
+    background: #fff url('../../asset/image/password.png') 20px top no-repeat;
+    background-size: 16px 80px;
 }
 
-.login-submit:hover {
-  /* border: 1px solid #2f5bb7; */
-  border: 0px;
-  text-shadow: 0 1px rgba(0,0,0,0.3);
-  background-color: #357ae8;
-  /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+.login-block input#password:focus {
+    background: #fff url('../../asset/image/password.png') 20px bottom no-repeat;
+    background-size: 16px 80px;
 }
 
-.login-card a {
-  text-decoration: none;
-  color: #666;
-  font-weight: 400;
-  text-align: center;
-  display: inline-block;
-  opacity: 0.6;
-  transition: opacity ease 0.5s;
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+    font-size: 17px;
 }
 
-.login-card a:hover {
-  opacity: 1;
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
 }
 
-.login-help {
-  width: 100%;
-  text-align: center;
-  font-size: 12px;
+.login-block button:hover {
+    background: #ff7b81;
 }
+.copyright{
+	color: black;
+	text-decoration: none;
+}
+.copyright:hover{
+	color: #ff656c;
+	text-decoration: underline;
+}
+footer{
+	position: absolute;
+	font: 0.75em verdana, arial, helvetiva, sans-serif;
+	color: #777777;
+	text-align: center;
+	width: 100%;
+    bottom: 0;
+    text-shadow: none;
+}
+}
+/*
+1200px – Desktops, notebooks com monitores widescreen
+***********************************************************/
+@media screen and (max-width: 1200px){
+/*
+960px – Tablets no formato paisagem e alguns monitores mais antigos
+***********************************************************/
+@media screen and (max-width=960px){
+      
+}
+/*
+768px – Tablets no formato retrato, como o iPad
+***********************************************************/
+@media screen and (max-width=768px){
+      
+}
+/*
+480px – Smartphones no formato paisagem com tela pequena
+**********************************************************
+@media screen and (max-width=480px){
+      
+}
+/*
+320px – Smartphones no formato retrato com tela pequena
+**********************************************************
+@media screen and (max-width=320px){
+      
+}
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+

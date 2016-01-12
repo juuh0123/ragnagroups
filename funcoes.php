@@ -19,7 +19,7 @@
 			$user = new usuarios();
 			$user->doLogout();
 			exit;
-		endif;		
+		endif;
 	}//inicializa
 	function loadCSS($arquivo = null, $media ='screen', $import = FALSE){
 		if($arquivo != null):
@@ -47,7 +47,7 @@
 			endif;	
 		endif;	
 	}//loadModulo
-	function protegeArquivo($nomeArquivo, $redirPara = 'home.php?erro=3'){
+	function protegeArquivo($nomeArquivo, $redirPara = 'login.php?erro=3'){
 		$url = $_SERVER["PHP_SELF"];
 		if(preg_match("/$nomeArquivo/i", $url)):
 			//redireciona para outra url

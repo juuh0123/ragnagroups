@@ -13,7 +13,7 @@ class sessao{
 	}//construtor
 	
 	public function start(){
-		session_start();
+		@session_start();
 		$this->id = session_id();
 		$this->setNvars();
 	}//metodo start

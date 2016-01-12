@@ -1,37 +1,31 @@
-<?php require_once("funcoes.php"); 
-protegeArquivo(basename(__FILE__));
+<?php //require_once("funcoes.php"); 
+//protegeArquivo(basename(__FILE__));
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
-"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt_BR" lang="pt_BR">
+<!DOCTYPE html>
+<html lang="pt_BR">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Ragnagroups | Home</title>
+		<title>Ragnagroups!</title>
 		<?php
-			//loadCSS('reset');
+			loadCSS('reset');
 			loadCSS('style');
+			loadCSS('login');
+			loadCSS('header');
 			//loadJS('jquery');
 			//loadJS('geral');
 		?>
 	</head>
 	<body class="painel">
 		<div id="wrapper">
-			<div id="header" style="background-color: #8FFF6A">
-				<h1>Aqui vai o logo e uma barra de menu</h1>
+			<!--<p>Não está subindo o painel</p>-->
+		<header>
+			<h1>RagnaGroups! Logo</h1>
+			<nav class="menu">
 				<ul>
-					<li>Fórum</li>
-					<li>Membros</li>
-					<li>Regras</li>
-					<li>Suporte</li>
+					<li><a href="#">Fórum</a></li>
+					<li><a href="#">Membros</a></li>
+					<li><a href="#">Regras</a></li>
+					<li><a href="#">Lorem Ipsum</a></li>
 				</ul>
-			</div><!--header-->
-			<form action="" enctype="multipart/form-data" method="post">
-				<label for="username">Nome de Usuário</label>
-				<input  type="text" name="username" id="username"  value tabindex="1" />
-				<label for="password">Senha</label>
-				<input  type="password" name="password" id="password"  tabindex="2" />
-				<input type="submit" class="radius5" name="login" id="login" value="Entrar" />
-				</form>	
-				
-				
-		
+			</nav>
+		</header>

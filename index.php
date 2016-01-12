@@ -26,12 +26,12 @@
 					<div id="sidebar">
 						<nav>
 						<ul>
-							<a href="painel.php" title="Forum"><li>Fórum</li></a>
-							<a href="#"><li>Database</li></a>
+							<a href="login.php" title="Forum"><li>Fórum</li></a>
+							<a onclick="location.href='painel.php?m=database&t=home'"><li>Database</li></a>
 							<a href="#"><li>Tutoriais</li></a>
 							<a href="#"><li>Videos</li></a>
 							<a href="#"><li>Sugestões</li></a>
-							<a href="#" id="ultimo" target="_blank"><li>Sobre</li></a>
+							<a href="#" id="ultimo"><li>Sobre</li></a>
 						</ul>
 						</nav>
 					</div><!--sidebar-->

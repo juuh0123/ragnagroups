@@ -1,7 +1,8 @@
-<?php include('header.php'); 
-//if(isset($_GET['m'])) $modulo = $_GET['m']; código do ricardo porém me retornava uma notice quando não era inicializada
-//if(isset($_GET['t'])) $tela = $_GET['t']; resolvido com o código abaixo
-if(isset($_GET['m'])): 
+<?php  
+include('funcoes.php'); 
+//protegeArquivo(basename(__FILE__));
+include('header.php'); 
+if(isset($_GET['m'])):
 	$modulo = $_GET['m'];
 else: 
 	$modulo = "";
@@ -16,12 +17,14 @@ endif;
 	<?php 
 		if($modulo && $tela):
 			loadModulo($modulo, $tela);
+			//echo 'subiu o modulo!';
 		else:
-			echo '<p>Escolha uma opção de menu ao lado.</>';
+			//echo '<p>Escolha uma opção de menu ao lado.</>';
+			redireciona('login.php?erro=3');
 		endif;		
 	?>
 </div><!--content-->
-<?php include('sidebar.php'); ?>
+<?php //include('sidebar.php'); ?>
 <?php include('footer.php'); ?>
 
 

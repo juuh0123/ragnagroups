@@ -1,19 +1,21 @@
-body.painel{
+/*body.painel{
 	font: 14px Georgia, "times new roman", times, serif;
 	color: #333;
 	background: #f8f8f8;
 }
+
 a:link, a:active, a:visited{
 	text-decoration: none;
 	color: #09f;
 }
 a:hover{
 	text-decoration: underline;
-}
+}*/
 #wrapper{
-	width: 980px;
-	margin: 0 auto;
-	background: #fff;
+	width: 100%;
+	xmargin: 0 auto;
+	xbackground: #fff;
+	position: absolute;
 }
 #header{
 	height: 100px;
@@ -28,19 +30,21 @@ a:hover{
 	display: table;
 	height: auto;
 	padding: 10px;
-	float: right;
 }
 #content{
-	float: right;
-	width: 795px;
+	width: 80%;
 	padding-left: 15px;
+	position: relative;
+	margin-top: 200px;
+	margin-left: 10px;
+	border: 1px solid #000;
 }
 #content h2{
 	font-size: 20px;
 	border-bottom: 1px solid #999;
 	margin-bottom: 10px;
 }
-#sidebar{
+/*#sidebar{
 	float: left;
 	width: 150px;
 }
@@ -133,11 +137,12 @@ form input[type=text]:focus, form input[type=password]:focus, form textarea:focu
 	-webkit-border-radius: 5px;
 	-o-border-radius: 5px;
 	-ms-border-radius: 5px;	
-}
+}*/
 .erro, .sucesso, .alerta, .pergunta{
-	width: 96%;
+	width: 40%;
+	text-align: center;
 	padding: 2%;
-	margin: 10px 0;
+	margin: 10px auto;
 	border-radius: 5px;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
@@ -171,7 +176,6 @@ form input[type=text]:focus, form input[type=password]:focus, form textarea:focu
 ul{
 	display: inline-block;
 }
-
 
 
 
