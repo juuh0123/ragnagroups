@@ -1,7 +1,8 @@
 <?php  
 include('funcoes.php'); 
-//protegeArquivo(basename(__FILE__));
 include('header.php'); 
+//protegeArquivo(basename(__FILE__));
+
 if(isset($_GET['m'])):
 	$modulo = $_GET['m'];
 else: 

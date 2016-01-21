@@ -35,6 +35,8 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 				$sessao->setVar('loginuser', $usLogado->login);
 				$sessao->setVar('logado', true);
 				$sessao->setVar('ip', $_SERVER['REMOTE_ADDR']);	
+				//print_r($sessao);
+				//exit;
 				return TRUE;
 			else:	
 				$sessao->destroy(TRUE);

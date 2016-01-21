@@ -1,6 +1,6 @@
-<?php require_once("funcoes.php"); ?>
+<?php require_once((dirname(__FILE__))."/funcoes.php");?>
 <!DOCTYPE>
-<html lang="pt_BR">
+<html>
 	<head>
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

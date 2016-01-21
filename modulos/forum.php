@@ -6,12 +6,15 @@ switch($tela):
 	case 'login':
 		//echo 'ola eu sou a tela de login';
 			$sessao = new sessao();
-			if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):
-				
+			//if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):
+			// no arquivo login.php eu vou validar se há alguma sessao em aberta, se sim mando para modulo forum tela home
+			//senao mando para forum case login onde valido novamente a senha, para evitar do usuario voltar na tela de login, com 
+			//esse if eu mando para class usuario metodo doLogin que vai criar a sessao e tals e depois manda para o forum home
+			if($sessao->getNvars()==0 && $sessao->getVar('logado') != TRUE && $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):	
 				if(isset($_POST['logar']))://logar é do form
 				$user = new usuarios();
-				$user->setValor('login', $_POST['usuario']);//campo do form
-				$user->setValor('senha', $_POST['senha']);
+				$user->setValor('login', antiInject($_POST['usuario']));//campo do form
+				$user->setValor('senha', antiInject($_POST['senha']));
 				if($user->doLogin($user)):
 					redireciona('painel.php?m=forum&t=home');
 				else:
@@ -37,7 +40,7 @@ switch($tela):
 					<input type="text" size="35" name="usuario" placeholder="Username" id="username" value="<?php //echo $_POST['usuario']; ?>" />
 					<input type="password" size="35" name="senha" placeholder="Password" id="password" value="<?php //echo $_POST['senha']; ?>" />
 					<button name="logar">Entrar</button>
-						
+					<!--<input class="radius5" type="submit" name="logar" value="Login"/>-->
 				</form>
 			</div>	
 			<?php
@@ -79,7 +82,7 @@ switch($tela):
 		<?php
 		break;	
 	default:
-		echo 'tomou no cu viado';
+		echo 'Página não encontrada';
 		break;	
 endswitch;		
 ?>

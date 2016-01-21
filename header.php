@@ -1,11 +1,17 @@
-<?php //require_once("funcoes.php"); 
+<?php //require_once(dirname(__FILE__).'/funcoes.php');
 //protegeArquivo(basename(__FILE__));
 ?>
-<!DOCTYPE html>
+<!DOCTYPE>
 <html lang="pt_BR">
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<title>Ragnagroups!</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>RagnaGroups | Tudo Sobre Ragnarok :)</title>
+		<meta name="description" content="">
+		<meta name="author" content="Junior">
+		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<link rel="shortcut icon" href="/favicon.ico">
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 		<?php
 			loadCSS('reset');
 			loadCSS('style');
