@@ -42,6 +42,9 @@ switch($tela):
 					<button name="logar">Entrar</button>
 					<!--<input class="radius5" type="submit" name="logar" value="Login"/>-->
 				</form>
+				<nav>
+					<p><a href="painel.php?m=forum&t=cadastro">Não possui acesso?</a></p>
+				</nav>	
 			</div>	
 			<?php
 							@$erro = $_GET['erro'];
@@ -80,7 +83,10 @@ switch($tela):
 				</article>
 			</section>	
 		<?php
-		break;	
+		break;
+	case 'cadastro':
+		echo "Hello! I'm the registration screen.";
+	break; 		
 	default:
 		echo 'Página não encontrada';
 		break;	

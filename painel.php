@@ -21,7 +21,9 @@ endif;
 			//echo 'subiu o modulo!';
 		else:
 			//echo '<p>Escolha uma opção de menu ao lado.</>';
-			redireciona('login.php?erro=3');
+			echo "$modulo - $tela";
+			exit;
+			//redireciona('login.php?erro=3');
 		endif;		
 	?>
 </div><!--content-->
