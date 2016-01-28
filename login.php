@@ -9,6 +9,7 @@
 		<?php
 			//loadCSS('reset');
 			loadCSS('login');
+			loadCSS('bootstrap');
 		?>
 	</head>
 	<body>
@@ -27,8 +28,6 @@
 	</body>
 </html>
 <?php
-
-
 	/*include 'conecta_mysql.php';
 	session_start();
 	

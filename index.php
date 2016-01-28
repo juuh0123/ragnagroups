@@ -17,12 +17,9 @@
 		?>
 	</head>
 	<body center clearfix>
-		<div id="wrap">
+		<div id="wrap" class="container">
 			<section class="billboard light">
 				<header>
-				<!--<div class="archer">
-				<a href="#"><img src="image/archer.jpg" width="100px" height="100px"></a>
-				</div>-->
 					<div id="sidebar">
 						<nav>
 						<ul>

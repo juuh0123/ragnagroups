@@ -22,7 +22,8 @@ endif;
 		else:
 			//echo '<p>Escolha uma opção de menu ao lado.</>';
 			echo "$modulo - $tela";
-			exit;
+			echo 'Modulo e/ou Tela não encontrado! Utilize sempre o Menu principal ou links para navegação.';
+			//exit;
 			//redireciona('login.php?erro=3');
 		endif;		
 	?>

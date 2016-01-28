@@ -43,7 +43,7 @@ switch($tela):
 					<!--<input class="radius5" type="submit" name="logar" value="Login"/>-->
 				</form>
 				<nav>
-					<p><a href="painel.php?m=forum&t=cadastro">Não possui acesso?</a></p>
+					<p><a href="cadastro.php" class="btn btn-link">Não possui acesso?</a></p>
 				</nav>	
 			</div>	
 			<?php

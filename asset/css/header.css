@@ -41,10 +41,12 @@ a{text-decoration: none; color:#fff;}
     padding: 10px 20px;
     box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.56);
     cursor: pointer;
+    font-family: "Segoe UI",Arial,sans-serif !important;
 }
 .menu ul li:hover{
-	border-bottom: 3px solid #4dff88;
-	border-radius: 4px
+	background-color: #000;
+	 -webkit-transition: background-color 0.3s ease color 0.3s;
+	transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 
