@@ -22,10 +22,10 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 		}//construct
 	
 		public function doLogin($objeto){
-			//$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".codificaSenha($objeto->getValor('senha'))."' AND
-			//ativo='s'"; DEVO ATIVAR DEPOIS E EXCLUIR A LINHA DE BAIXO, SÓ PARA NAO CODIFICAR MINHA SENHA FEITA NA MAO
-			$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".$objeto->getValor('senha')."' AND
-			ativo='s'";
+			$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".codificaSenha($objeto->getValor('senha'))."' AND
+			ativo='s'"; //DEVO ATIVAR DEPOIS E EXCLUIR A LINHA DE BAIXO, SÓ PARA NAO CODIFICAR MINHA SENHA FEITA NA MAO
+			//$objeto->extrasSelect = "WHERE login='".$objeto->getValor('login')."' AND senha='".$objeto->getValor('senha')."' AND
+			//ativo='s'";
 			$this->select($objeto);
 			$sessao = new sessao();
 			if($this->linhasafetadas==1):
@@ -49,5 +49,20 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 			$sessao->destroy(TRUE);
 			redireciona('?erro=1');
 		}
-	}//fim da classe Clientes
+		public function existeRegistro($campo=NULL, $valor=NULL){//nessa funcao eu valido se o usuario já esta cadastrado 
+			if($campo != NULL && $valor != NULL):
+				is_numeric($valor) ? $valor = $valor : $valor = "'".$valor."'";
+				$this->extrasSelect = "WHERE $campo=$valor";
+				$this->select($this);
+				if($this->linhasafetadas > 0):
+					return TRUE;
+				else:
+					return FALSE;
+				endif;		
+			else:
+				$this->trataErro(__FILE__, __FUNCTION__, 'Faltam parâmentros para executar a função', TRUE);
+			endif;		
+		}//existeRegistro
+		
+	}//fim da classe de Usuarios
 ?>
