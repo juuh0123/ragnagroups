@@ -1,20 +1,5 @@
-/*body.painel{
-	font: 14px Georgia, "times new roman", times, serif;
-	color: #333;
-	background: #f8f8f8;
-}
-
-a:link, a:active, a:visited{
-	text-decoration: none;
-	color: #09f;
-}
-a:hover{
-	text-decoration: underline;
-}*/
 #wrapper{
 	width: 100%;
-	xmargin: 0 auto;
-	xbackground: #fff;
 	position: absolute;
 }
 #header{

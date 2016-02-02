@@ -1,26 +1,21 @@
 <?php require_once((dirname(__FILE__))."/funcoes.php");
 require_once((dirname(__FILE__))."/recaptchalib.php");
-	if(!verificaLogin2()){
-		//echo "Eu sou a tela de cadastro. Aqui dentro vai todo PHP e HTML para o cadastro.";
+	if(verificaLogin2()){//valida se o usuário já está logado, se sim, não deve deixa-lo ver a página de cadastro.
 		loadCSS('bootstrap');
 		loadCSS('cad');
 		loadJS('jquery');
 		loadJS('jquery-validate');
 		loadJS('jquery-validate-messages');
 		loadJS('bootstrap');
-		
-		
 		$secret = "6LeubxYTAAAAANARyG_ZJ8qqXeHUK2wVkE41Ub5l";
 			$response = null;
 			$reCaptcha = new ReCaptcha($secret);
-			
 			if(@$_POST["g-recaptcha-response"]){
 				$response = $reCaptcha->verifyResponse(
 			        $_SERVER["REMOTE_ADDR"],
 			        $_POST["g-recaptcha-response"]
 		    	);
 			}
-
 		if(isset($_POST['cadastrar'])){//cadastrar 
 		if ($response != null && $response->success) {	
 			$user = new usuarios(array(
@@ -51,14 +46,15 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		}//cadastrar-Fim
 ?>	
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-		<title>RagnaGroups | Tudo Sobre Ragnarok :)</title>
-		<meta name="description" content="">
-		<meta name="author" content="Junior">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8; IE=edge,chrome=1" />
+		<title>RagnaGroups | Cadastro</title>
+		<meta name="description" content="Ragnagroups, fórum, database, tutoriais, videos, sugestões, sobre, tudo sobre ragnarok">
+		<meta name="author" content="Daniel Vieira Junior">
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
+		<meta name="robots" content="index, follow" />
+		<meta name="google" content="nositelinkssearchbox" />
 		<script src='https://www.google.com/recaptcha/api.js?hl=pt-BR'></script>
 		<script type="text/javascript">
 				$(document).ready(function(){
@@ -128,6 +124,10 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		</div>
 	</body>
 	<?php	
-	}//verificaLogin	
 	include('footer.php');	
+	}//verificaLogin
+	else{
+		redireciona('painel.php?m=forum&t=home');
+	}	
+	
 ?>

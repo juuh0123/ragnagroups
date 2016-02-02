@@ -11,6 +11,12 @@
 		background: #555555;
 	}	
 }
+@media screen and (min-width : 769px) and (max-width: 991px){
+/*Tablets até 960*/
+	body{
+		background: #007fff;
+	}	
+}
 @media screen and (min-width: 992px){
 body{
 	background: url('../image/prontera.jpg') no-repeat;
@@ -130,30 +136,6 @@ footer{
 /*
 960px – Tablets no formato paisagem e alguns monitores mais antigos
 ***********************************************************/
-@media screen and (max-width=960px){
-      
-}
-/*
-768px – Tablets no formato retrato, como o iPad
-***********************************************************/
-@media screen and (max-width=768px){
-      
-}
-/*
-480px – Smartphones no formato paisagem com tela pequena
-**********************************************************
-@media screen and (max-width=480px){
-      
-}
-/*
-320px – Smartphones no formato retrato com tela pequena
-**********************************************************
-@media screen and (max-width=320px){
-      
-}
-
-*/
-
 
 
 

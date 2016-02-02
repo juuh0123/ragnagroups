@@ -1,20 +1,15 @@
-<?php require_once((dirname(__FILE__))."/funcoes.php");?>
 <!DOCTYPE>
-<html>
+<html lang="pt-BR">
 	<head>
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>RagnaGroups | Tudo Sobre Ragnarok :)</title>
-		<meta name="description" content="">
-		<meta name="author" content="Junior">
+		<meta name="description" content="Ragnagroups, fórum, database, tutoriais, videos, sugestões, sobre, tudo sobre ragnarok">
+		<meta name="author" content="Daniel Vieira Junior">
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
-		<link rel="shortcut icon" href="/favicon.ico">
-		<link rel="apple-touch-icon" href="/apple-touch-icon.png">
-		<?php
-			//loadCSS('reset');
-			loadCSS('index');
-			loadCSS('normalize');
-		?>
+		<meta name="robots" content="index, follow">
+		<meta name="google" content="nositelinkssearchbox">
+		<link type="text/css" rel="stylesheet" href="asset/css/normalize.css">
+		<link type="text/css" rel="stylesheet" href="asset/css/index.css">
 	</head>
 	<body center clearfix>
 		<div id="wrap" class="container">

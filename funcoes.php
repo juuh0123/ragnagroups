@@ -26,7 +26,7 @@
 			if($import == TRUE):
 				echo '<style type="text/css">@import url("'.BASEURL.CSSPATH.$arquivo.'.css");</style>'."\n";
 			else:
-			echo '<link rel="stylesheet" type="text/css" href="'.BASEURL.CSSPATH.$arquivo.'.css" media="'.$media.'" />'."\n";
+				echo '<link rel="stylesheet" type="text/css" href="'.BASEURL.CSSPATH.$arquivo.'.css" media="'.$media.'" />'."\n";
 			endif;
 		endif;		
 	}//loadCSS
@@ -116,9 +116,12 @@
 	}
 	function verificaLogin2(){
 		$sessao = new sessao();
-		if($sessao->getNvars() <= 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):
+		if($sessao->getNvars() <= 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']){
 			//redireciona('?erro=3');
-		endif;	
+			return true;
+		}else{
+			return false;
+		}
 	}//vai verificar session, se pode ou não acessar certas páginas
 ?>
 
