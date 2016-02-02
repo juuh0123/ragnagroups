@@ -7,6 +7,8 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		loadJS('jquery-validate');
 		loadJS('jquery-validate-messages');
 		loadJS('bootstrap');
+		
+		try{
 		$secret = "6LeubxYTAAAAANARyG_ZJ8qqXeHUK2wVkE41Ub5l";
 			$response = null;
 			$reCaptcha = new ReCaptcha($secret);
@@ -16,6 +18,10 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			        $_POST["g-recaptcha-response"]
 		    	);
 			}
+		}catch(exception $e){
+			echo "Ocorreu um erro de conexão com o ReCaptcha.<p>".$e->getFile()."</p><p>".$e->getLine()."</p><p>".$e->getMessage();	
+		}
+			
 		if(isset($_POST['cadastrar'])){//cadastrar 
 		if ($response != null && $response->success) {	
 			$user = new usuarios(array(
@@ -23,9 +29,10 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 				'login'=>antiInject($_POST['login']),
 				'email'=>antiInject($_POST['email']),
 				'senha'=>codificaSenha($_POST['senha']),
-				'ativo'=>'s',
-				'dataCad'=>date('Y-m-d H:i:s')
-		));
+				//'termo'=>($_POST['termo']), na vdd esse campo nao é necessario ainda, pois o usuario só consegue se cadastrar
+				'ativo'=>'s',//se o checkbox termos de uso estiver ativo, mas se ele entrar sem js ativo nao consigo ter provas de que
+				'dataCad'=>date('Y-m-d H:i:s')//ele concordou com os termos, ele poderia alegar que o site apresentou erro e ele nao
+		));//concordou com nada
 			if($user->existeRegistro('login',$_POST['login'])):
 				printMSG('Este login já está cadastrado, escolha outro nome de usuário.','erro');
 				$duplicado = TRUE;

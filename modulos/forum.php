@@ -37,8 +37,8 @@ switch($tela):
 			<div class="login-block">
 				<h1>Efetue o login para continuar</h1>
 				<form class="userForm" method="post" action="">
-					<input type="text" size="35" name="usuario" placeholder="Username" id="username" value="<?php //echo $_POST['usuario']; ?>" />
-					<input type="password" size="35" name="senha" placeholder="Password" id="password" value="<?php //echo $_POST['senha']; ?>" />
+					<input type="text" size="35" name="usuario" placeholder="Username" id="username" autocomplete="off" value="<?php //echo $_POST['usuario']; ?>" />
+					<input type="password" size="35" name="senha" placeholder="Password" id="password" autocomplete="off" value="<?php //echo $_POST['senha']; ?>" />
 					<button name="logar">Entrar</button>
 					<!--<input class="radius5" type="submit" name="logar" value="Login"/>-->
 				</form>
