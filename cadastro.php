@@ -8,7 +8,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		loadJS('jquery-validate-messages');
 		loadJS('bootstrap');
 		
-		try{
+		try{ 
 		$secret = "6LeubxYTAAAAANARyG_ZJ8qqXeHUK2wVkE41Ub5l";
 			$response = null;
 			$reCaptcha = new ReCaptcha($secret);
@@ -79,10 +79,10 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			</script>
 	</head>
 	<body>
-		<div id="topo"></div>
+		<div id="topo">Logo</div>
 		<div id="wrap">
+			<div class="geral">
 			<header>
-				<div class="logocad">LOGO</div>	
 				<h1>Cadastro</h1>
 			</header>
 			<form action="" method="post" name="cadForm" class="cadForm">
@@ -128,10 +128,11 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			  </div>
 			</div>
 			<!-- Modal -->
-		</div>
+			</div><!-- Geral -->
+		</div><!--wrap-->
 	</body>
-	<?php	
-	include('footer.php');	
+</html>		
+	<?php		
 	}//verificaLogin
 	else{
 		redireciona('painel.php?m=forum&t=home');

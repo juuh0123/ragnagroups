@@ -57,6 +57,7 @@ body {
     font-family: "Open Sans", Helvetica, sans-serif, arial; 
     padding: 0 20px 0 50px;
     outline: none;
+    xtext-align: center;
 }
 .login-block input#username {
     background: #fff url('../../asset/image/user.png') 20px top no-repeat;
