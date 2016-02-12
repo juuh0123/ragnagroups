@@ -47,18 +47,18 @@ switch($tela):
 				</nav>	
 			</div>	
 			<?php
-							@$erro = $_GET['erro'];
-							switch($erro):
-								case 1:
-									echo '<div class="sucesso">Você fez logoff do sistema.</div>';
-									break;
-								case 2:
-									echo '<div class="erro">Dados incorretos ou usuário inativo.</div>';
-									break;
-								case 3:
-									echo '<div class="erro">Faça login antes de acessar a página solicitada.</div>';	
-									break;
-							endswitch;
+				@$erro = $_GET['erro'];
+				switch($erro):
+					case 1:
+						echo '<div class="sucesso">Você fez logoff do sistema.</div>';
+					break;
+					case 2:
+						echo '<div class="erro">Dados incorretos ou usuário inativo.</div>';
+					break;
+					case 3:
+						echo '<div class="erro">Faça login antes de acessar a página solicitada.</div>';	
+					break;
+				endswitch;
 						?>
 			<?php
 			//CASO A SESSAO JA TENHO SIDO ABERTA, LOGIN JA EFETUADO, VAI MANDAR PRO HOME.
@@ -67,10 +67,59 @@ switch($tela):
 			endif;
 	break;
 	case 'home':
-			$timeLine = new Timeline();
+			//$timeline = new Timeline();
+			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic'>Novo Tópico</a>";
 			//$timeLine->select($timeLine);
-			
+			$timeline = new Topico();
+			$timeline->select($timeline);
+			echo "<article class='topiclist'><table class='table table-striped'>";
+			while($res = $timeline->retornaDados()):
+				?>
+				    <tr>
+					<span>
+						<td><h4><a href="#"><?php echo $res->top_name?></a></h4>
+							<span><?php echo $res->top_obj?></span>
+						</td>	
+					</span>
+					</tr>
+				<?php
+			endwhile;
+			echo "</table></article>";
 		break;
+	case 'newtopic':
+		try{ 
+		if(isset($_POST['newtopic']) && !empty($_POST['top_name']) && !empty($_POST['top_obj'])){
+			//echo "entrou no if do topico";
+			date_default_timezone_set ( "America/Sao_Paulo" );
+			$topic = new Topico(array(
+				'top_name' => antiInject($_POST['top_name']),
+				'top_obj' => antiInject($_POST['top_obj']),
+				'top_date' => date('Y-m-d H:i:s', time()),
+			));
+			$topic->inserir($topic);
+			redireciona('painel.php?m=forum&t=home');
+		}
+		}//try
+		catch(exception $e){
+			echo $e->getMessage();
+		}
+		?>
+		<div class="newtopic">
+			<header>
+				<h1>Criar um novo tópico</h1>
+			</header>
+			<article>
+			<form class="form-group formnewtopic" method="post">
+				<label>Título</label><br />
+				<input type="text" name="top_name" size="80" class="form-control newinput"/>
+				<label>Objetivo</label><br />
+				<textarea class="form-control newinput"  name="top_obj" rows="3"></textarea>
+				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
+			</form>
+			</article>
+		</div>
+		<?php
+	break;		
 	case 'cadastro':
 		echo "Hello! I'm the registration screen.";
 	break; 		

@@ -7,48 +7,145 @@ body{
 	background: #fff;
 	background-size: cover;
     font-family: Montserrat;
+    /*font-family: "Segoe UI",Arial,sans-serif !important;*/
 }	
-header{
-	/*background-image: url('../../asset/image/backgrounds/purple.jpg');*/
-	background-color: #ff6666;
-	width: 100%;
-    height: 100px;
-    position: absolute;
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:700);
+#cssmenu {
+  background: #4f9fcf;
+  width: auto;
 }
-h1{
-	position: relative;
-	float: left;
-	font-size: 36px;
-	margin-top: 60px;
+#cssmenu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  display: block;
+  zoom: 1;
 }
-.menu{
-	font-size: 17px;
-    font-weight: bold;
-    box-shadow: none;
-    text-shadow: 2px 2px 0px #000;
+#cssmenu ul:after {
+  content: " ";
+  display: block;
+  font-size: 0;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+}
+#cssmenu ul li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+#cssmenu.align-right ul li {
+  float: right;
+}
+#cssmenu.align-center ul {
+  text-align: center;
+}
+#cssmenu ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 15px 25px;
+  font-family: "Segoe UI",Arial,sans-serif
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  position: relative;
+  -webkit-transition: color .25s;
+  -moz-transition: color .25s;
+  -ms-transition: color .25s;
+  -o-transition: color .25s;
+  transition: color .25s;
+}
+#cssmenu ul li a:hover {
+  color: #333333;
+}
+#cssmenu ul li a:hover:before {
+  width: 100%;
+}
+#cssmenu ul li a:after {
+  content: "";
+  display: block;
+  position: absolute;
+  right: -3px;
+  top: 19px;
+  height: 6px;
+  width: 6px;
+  background: #ffffff;
+  opacity: .5;
+}
+#cssmenu ul li a:before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 0;
+  background: #333333;
+  -webkit-transition: width .25s;
+  -moz-transition: width .25s;
+  -ms-transition: width .25s;
+  -o-transition: width .25s;
+  transition: width .25s;
+}
+#cssmenu ul li.last > a:after,
+#cssmenu ul li:last-child > a:after {
+  display: none;
+}
+#cssmenu ul li.active a {
+  color: #333333;
+}
+#cssmenu ul li.active a:before {
+  width: 100%;
+}
+#cssmenu.align-right li.last > a:after,
+#cssmenu.align-right li:last-child > a:after {
+  display: block;
+}
+#cssmenu.align-right li:first-child a:after {
+  display: none;
+}
+@media screen and (max-width: 768px) {
+  #cssmenu ul li {
+    float: none;
+    display: block;
+  }
+  #cssmenu ul li a {
+    width: 100%;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-bottom: 1px solid #fb998c;
+  }
+  #cssmenu ul li.last > a,
+  #cssmenu ul li:last-child > a {
+    border: 0;
+  }
+  #cssmenu ul li a:after {
+    display: none;
+  }
+  #cssmenu ul li a:before {
+    display: none;
+  }
+}
+.last{
 	position: relative;
-	margin-top: 70px;
 	float: right;
-	margin-right: 5px;
+	clear: both;
 }
-a{text-decoration: none; color:#fff;}
-.menu ul li{
-	display: inline;
-	width: 100%;
-    border-radius: 2px;
-    background: #ccc;
-    letter-spacing: 1px;
-    padding: 10px 20px;
-    box-shadow: 2px 2px 0px 0px rgba(0,0,0,0.56);
-    cursor: pointer;
-    font-family: "Segoe UI",Arial,sans-serif !important;
+.form-group input[type=text]{
+	width: 50%;
 }
-.menu ul li:hover{
-	background-color: #000;
-	 -webkit-transition: background-color 0.3s ease color 0.3s;
-	transition: background-color 0.3s ease, color 0.3s ease;
+.form-group textarea{
+	margin-bottom: 10px;
 }
-
-
-
+.btn.newtopic{
+	float: right;
+	clear: both;
+}
+.topiclist{
+	width: 70%;
+	text-align: left;
+}
 }/*FIM 992px*/

@@ -21,8 +21,9 @@ endif;
 			//echo 'subiu o modulo!';
 		else:
 			//echo '<p>Escolha uma opção de menu ao lado.</>';
-			echo "$modulo - $tela";
-			echo 'Modulo e/ou Tela não encontrado! Utilize sempre o Menu principal ou links para navegação.';
+			//echo "$modulo - $tela";
+			//echo 'Modulo e/ou Tela não encontrado! Utilize sempre o Menu principal ou links para navegação.';
+			loadModulo('forum','home');
 			//exit;
 			//redireciona('login.php?erro=3');
 		endif;		
