@@ -9,7 +9,7 @@
 }
 
 body{
-	background-image: url('../../asset/image/cad.jpg');
+	xbackground-image: url('../../asset/image/cad.jpg');
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-color: #fff;

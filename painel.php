@@ -1,8 +1,9 @@
 <?php  
-include('funcoes.php'); 
+require_once(dirname(__FILE__)."/funcoes.php");
+if(verificaLogin2()):
+	redireciona('login.php?erro=3');
+endif;	
 include('header.php'); 
-//protegeArquivo(basename(__FILE__));
-
 if(isset($_GET['m'])):
 	$modulo = $_GET['m'];
 else: 

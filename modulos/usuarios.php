@@ -8,7 +8,7 @@ loadCSS('login');
 //echo $teste;
 	switch($tela):
 		case 'login':
-			$sessao = new sessao();
+			//$sessao = new sessao();
 			if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']) redireciona('home.php');
 			if(isset($_POST['logar']))://logar é do form
 				$user = new usuarios();
@@ -40,7 +40,7 @@ loadCSS('login');
 						<ul>
 							<li>
 								<label for="usuario">Usuário:</label>-->
-								<input type="text" size="35" name="usuario" placeholder="Usuário" value="<?php //echo $_POST['usuario']; ?>" />
+								<input type="text" size="35" name="usuario" placeholder="Usuário" />
 							</li>
 							<li>
 								<!--<label for="senha">Senha:</label>-->

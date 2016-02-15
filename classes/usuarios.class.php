@@ -47,7 +47,7 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 		public function doLogout(){
 			$sessao = new sessao();
 			$sessao->destroy(TRUE);
-			redireciona('login.php');
+			header('Location: login.php');
 		}
 		public function existeRegistro($campo=NULL, $valor=NULL){//nessa funcao eu valido se o usuario já esta cadastrado 
 			if($campo != NULL && $valor != NULL):

@@ -1,4 +1,5 @@
 <?php require_once((dirname(__FILE__))."/funcoes.php");
+require_once('classes/autoload.php');
 require_once((dirname(__FILE__))."/recaptchalib.php");
 	if(verificaLogin2()){//valida se o usuário já está logado, se sim, não deve deixa-lo ver a página de cadastro.
 		loadCSS('bootstrap');
@@ -8,7 +9,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		loadJS('jquery-validate-messages');
 		loadJS('bootstrap');
 		
-		try{ 
+		/*try{ 
 		$secret = "6LeubxYTAAAAANARyG_ZJ8qqXeHUK2wVkE41Ub5l";
 			$response = null;
 			$reCaptcha = new ReCaptcha($secret);
@@ -20,15 +21,16 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			}
 		}catch(exception $e){
 			echo "Ocorreu um erro de conexão com o ReCaptcha.<p>".$e->getFile()."</p><p>".$e->getLine()."</p><p>".$e->getMessage();	
-		}
+		}*/
 			
 		if(isset($_POST['cadastrar'])){//cadastrar 
-		if ($response != null && $response->success) {	
+		//if ($response != null && $response->success) {	
 			$user = new usuarios(array(
 				'nome'=>antiInject($_POST['nome']),
 				'login'=>antiInject($_POST['login']),
 				'email'=>antiInject($_POST['email']),
 				'senha'=>codificaSenha($_POST['senha']),
+				'user_dir'=>diretorio($_POST['login']),
 				//'termo'=>($_POST['termo']), na vdd esse campo nao é necessario ainda, pois o usuario só consegue se cadastrar
 				'ativo'=>'s',//se o checkbox termos de uso estiver ativo, mas se ele entrar sem js ativo nao consigo ter provas de que
 				'dataCad'=>date('Y-m-d H:i:s')//ele concordou com os termos, ele poderia alegar que o site apresentou erro e ele nao
@@ -42,14 +44,15 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 				$duplicado = TRUE;
 			endif;
 			if(@$duplicado != TRUE):
+				$sessao = new sessao();
 				$user->inserir($user);
 				if($user->linhasafetadas==1):
-					printMSG('Dados inseridos com sucesso. <a href="'.ADMURL.'?m=forum&t=login">Ir para tela de login</a>');
+					printMSG('Dados inseridos com sucesso. <a href="login.php">Ir para tela de login</a>');
 					unset($_POST);
 				endif;
 			endif;
-			}//captcha
-			else echo "O preenchimento do Captcha é necessário para provar que você não é um robô.";
+			//}//captcha
+			//else echo "O preenchimento do Captcha é necessário para provar que você não é um robô.";
 		}//cadastrar-Fim
 ?>	
 <!DOCTYPE html>

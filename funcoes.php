@@ -123,14 +123,11 @@
 			return false;
 		}
 	}//vai verificar session, se pode ou não acessar certas páginas
+	function diretorio($iduser){
+		$path = 'asset/picture/profile/'.$iduser;
+		mkdir($path, null, true);
+		return $path;
+	}
+
+
 ?>
-
-
-
-
-
-
-
-
-
-

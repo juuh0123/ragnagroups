@@ -18,11 +18,11 @@
 			<br />
 			<nav id="cssmenu">
 				<ul>
-					<li><a href="#">Fórum</a></li>
+					<li><a href="painel.php?m=forum&t=home">Fórum</a></li>
 					<li><a href="#">Membros</a></li>
 					<li><a href="#">Regras</a></li>
 					<li><a href="#">Lorem Ipsum</a></li>
-					<li class="last log"><a href="?logoff=true">log off</a></li>
+					<li class="last log"><a href="painel.php?m=forum&t=logoff">log off</a></li>
 				</ul>
 				
 			</nav>

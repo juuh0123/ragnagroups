@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	user_ativo   				CHAR(2), /*s ou n para ativo ou inativo*/
 	user_date					DATE NOT NULL,/*data de criação da conta*/
 	user_photo				VARCHAR(200), /*foto de perfil*/
+	user_dir					VARCHAR(50), /*diretorio do usuário*/
 	user_post_id	(ce)		VARCHAR(500), /*esse campo é para pegar os id's dos post do usuario*/ 
 	user_topic_id (ce)		VARCHAR(100), /*esse campo deve receber os id's dos tópico do usuário, apenas topicos criados por ele.*/	
 	user_ip						VARCHAR(20) /*guardar os ip's do usuário*/

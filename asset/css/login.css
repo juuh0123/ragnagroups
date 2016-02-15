@@ -17,7 +17,7 @@
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url(https://fonts.googleapis.com/css?family=Roboto);
 body {
-    background: url('../../asset/image/19.jpg') no-repeat fixed center center;
+    xbackground: url('../../asset/image/19.jpg') no-repeat fixed center center;
     background-size: cover;
     xfont-family: Montserrat;
     font-family: "Open Sans", Helvetica, sans-serif, arial;
@@ -108,7 +108,7 @@ body {
 }
 footer{
 	position: absolute;
-	font: 0.75em verdana, arial, helvetiva, sans-serif;
+	font: 0.95em verdana, arial, helvetiva, sans-serif;
 	color: #777777;
 	text-align: center;
 	width: 100%;

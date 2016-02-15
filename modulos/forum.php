@@ -37,8 +37,8 @@ switch($tela):
 			<div class="login-block">
 				<h1>Efetue o login para continuar</h1>
 				<form class="userForm" method="post" action="">
-					<input type="text" size="35" name="usuario" placeholder="Username" id="username" autocomplete="off" value="<?php //echo $_POST['usuario']; ?>" />
-					<input type="password" size="35" name="senha" placeholder="Password" id="password" autocomplete="off" value="<?php //echo $_POST['senha']; ?>" />
+					<input type="text" size="35" name="usuario" placeholder="Username" id="username" autocomplete="off" autofocus>
+					<input type="password" size="35" name="senha" placeholder="Password" id="password" autocomplete="off">
 					<button name="logar">Entrar</button>
 					<!--<input class="radius5" type="submit" name="logar" value="Login"/>-->
 				</form>
@@ -67,11 +67,40 @@ switch($tela):
 			endif;
 	break;
 	case 'home':
-			//$timeline = new Timeline();
 			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic'>Novo Tópico</a>";
 			//$timeLine->select($timeLine);
 			$timeline = new Topico();
+			$user = new usuarios();
+			$sessao = new sessao();
+			$id = $sessao->getVar('loginuser');
+			
+			$user->conecta();
+			$query = "SELECT foto FROM usuarios WHERE login='$id'";
+			$result = mysql_query($query);
+			if($row = mysql_fetch_assoc($result)){
+				if($row['foto'] != ''){
+					$profile = "<img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
+					echo $sessao->getVar('dir');
+					//echo "teste";
+					//die();
+				}
+				else{
+					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
+					$profile = "<div class='divupload'><input type='file' class='upload'></div>";
+				}	
+			}
+			//$user->extrasSelect = "foto FROM usuarios WHERE login='".$sessao->getVar('loginuser');
+			//print $sessao->getVar('loginuser');
+			//$user->selectCampos($user);
+			
 			$timeline->select($timeline);
+			
+			?>
+				<div class="photo profile">
+					<section><?php echo $profile; ?><p>
+						<?php $user->extrasSelect = "WHERE login='".$sessao->getVar('loginuser')?></p></section><!--src=''-->
+				</div>
+			<?php
 			echo "<article class='topiclist'><table class='table table-striped'>";
 			while($res = $timeline->retornaDados()):
 				?>
@@ -86,6 +115,11 @@ switch($tela):
 			endwhile;
 			echo "</table></article>";
 		break;
+	case 'logoff':
+		  	$user = new usuarios();
+			$user->doLogout();
+			session_destroy();
+		break;	
 	case 'newtopic':
 		try{ 
 		if(isset($_POST['newtopic']) && !empty($_POST['top_name']) && !empty($_POST['top_obj'])){
@@ -111,9 +145,9 @@ switch($tela):
 			<article>
 			<form class="form-group formnewtopic" method="post">
 				<label>Título</label><br />
-				<input type="text" name="top_name" size="80" class="form-control newinput"/>
+				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required>
 				<label>Objetivo</label><br />
-				<textarea class="form-control newinput"  name="top_obj" rows="3"></textarea>
+				<textarea class="form-control newinput"  name="top_obj" maxlength="400" rows="3" required></textarea>
 				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
 			</form>
 			</article>
