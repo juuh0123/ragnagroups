@@ -16,7 +16,7 @@ if(isset($tela)):
 	$post->select($post);
 	$topico->extrasSelect = "WHERE top_name='$top_name'";
 	
-	$query = "SELECT post_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = $row";
+	$query = "SELECT post_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row";
 	//echo $query; die();
 	$result = mysql_query($query);
 	
@@ -42,8 +42,6 @@ if(isset($tela)):
 	endwhile;
 	endif;		
 	echo "</table></article>";
-	echo 'Eu vou carregar seu topico junto com os posts dentro dele, e dentro dos posts os coments!<br />
-	Se prepara porque é aqui que a mágica acontece!';
 endif;//if inicial	
 	
 ?>
