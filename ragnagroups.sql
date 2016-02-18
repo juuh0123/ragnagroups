@@ -4,6 +4,20 @@ DROP DATABASE IF EXISTS ragnagroups;
 CREATE DATABASE  ragnagroups;
 USE ragnagroups;
 
+CREATE TABLE IF NOT EXISTS `boss` (
+	boss_id					INT AUTO_INCREMENT PRIMARY KEY,
+	boss_login				VARCHAR(50) UNIQUE NOT NULL,
+	boss_pass				VARCHAR(20) NOT NULL,
+	boss_name			VARCHAR(50) NOT NULL,
+	boss_mail 				VARCHAR(80) NOT NULL,
+	boss_ativo
+	boss_date
+	boss_req /*este campo na vdd deve sem uma nova entidade que representa um relacionamento entre os usuarios e o adm, no caso ao criarem um novo topico deve ir para
+	o administrador aprovar*/
+	boss_photo
+	
+);
+
 CREATE TABLE IF NOT EXISTS `users`(
 	user_id						INT AUTO_INCREMENT PRIMARY KEY,
 	user_login					VARCHAR(50) UNIQUE NOT NULL,
@@ -13,7 +27,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	user_ativo   				CHAR(2), /*s ou n para ativo ou inativo*/
 	user_date					DATE NOT NULL,/*data de criação da conta*/
 	user_photo				VARCHAR(200), /*foto de perfil*/
-	user_dir					VARCHAR(50), /*diretorio do usuário*/
+	user_dir					VARCHAR(50), /*diretorio do usuário, por enquanto */
 	user_post_id	(ce)		VARCHAR(500), /*esse campo é para pegar os id's dos post do usuario*/ 
 	user_topic_id (ce)		VARCHAR(100), /*esse campo deve receber os id's dos tópico do usuário, apenas topicos criados por ele.*/	
 	user_ip						VARCHAR(20) /*guardar os ip's do usuário*/
@@ -46,6 +60,16 @@ CREATE TABLE IF NOT EXISTS `coments`(/*todo comentario esta contido em um post e
 	com_container 		VARCHAR(500) NOT NULL,  /*Contem a string do comentario, ou seja, o input textArea que o usuario submeter eu vou jogar aqui depois de validar seu conteudo*/
 	com_date				TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'/*quando foi comentado*/
 );
+
+CREATE TABLE IF NOT EXISTS `topic_request`(
+	req_id /*o id auto incremento da requisicao*/
+	req_user_id  /*quem requisitou, ou seja, quem está solicitando?*/
+	req_topic_obj /*o adm deve receber o obj e ler para saber se é valido ou nao criar um topico para isso*/
+	req_status /*se foi ou não aprovada pelo adm - if(req_status != 'aprovado') não exibe o topico que o usuario solicitou */ 
+	req_topic_id  /*o id do topico que foi criado*/
+);
+
+
 INSERT INTO usuarios(id, login, nome, senha, email, ativo, dataCad, foto, post, topico, ip) VALUES(1, 'admin', 'daniel', 'admin', 'djr@br.ibm.com', 's', '10-01-2016',  'null', 'null', 'null', 'null');
 
 

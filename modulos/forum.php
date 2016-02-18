@@ -2,6 +2,7 @@
 require_once(dirname(dirname(__FILE__))."/funcoes.php");
 protegeArquivo(basename(__FILE__));
 loadCSS('style');
+loadJS('geral');
 switch($tela):
 	case 'login':
 		//echo 'ola eu sou a tela de login';
@@ -70,29 +71,29 @@ switch($tela):
 			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic'>Novo Tópico</a>";
 			//$timeLine->select($timeLine);
 			$timeline = new Topico();
-			$user = new usuarios();
+			$user = new usuarios();	
 			$sessao = new sessao();
 			$id = $sessao->getVar('loginuser');
-			
+			$nome = ucwords($sessao->getVar('nomeuser'));
 			$user->conecta();
 			$query = "SELECT foto FROM usuarios WHERE login='$id'";
 			$result = mysql_query($query);
 			if($row = mysql_fetch_assoc($result)){
 				if($row['foto'] != ''){
-					$profile = "<img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
-					echo $sessao->getVar('dir');
-					//echo "teste";
-					//die();
+					$profile = "<img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
+					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
+					
 				}
 				else{
 					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
-					$profile = "<div class='divupload'><input type='file' class='upload'></div>";
+					$profile = "<div id='divupload'><input type='file' class='upload'></div>
+					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
 				}	
 			}
 			//$user->extrasSelect = "foto FROM usuarios WHERE login='".$sessao->getVar('loginuser');
 			//print $sessao->getVar('loginuser');
 			//$user->selectCampos($user);
-			
+			$timeline->extrasSelect = "ORDER BY top_date DESC;";
 			$timeline->select($timeline);
 			
 			?>
@@ -106,29 +107,37 @@ switch($tela):
 				?>
 				    <tr>
 					<span>
-						<td><h4><a href="#"><?php echo $res->top_name?></a></h4>
-							<span><?php echo $res->top_obj?></span>
+						<td><h4><a href="#"><?php echo ucfirst($res->top_name)?></a></h4>
+							<span><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
 					</span>
 					</tr>
 				<?php
 			endwhile;
 			echo "</table></article>";
-		break;
+		break;//HOME
 	case 'logoff':
 		  	$user = new usuarios();
 			$user->doLogout();
 			session_destroy();
+			mysql_close();
 		break;	
 	case 'newtopic':
+		$user = new usuarios();
+		$sessao = new sessao();
+		$id = $sessao->getVar('loginuser');
+		$query = "SELECT id FROM usuarios WHERE login='$id'";
+		$user = mysql_query($query);
+		$user = mysql_fetch_assoc($user);
 		try{ 
 		if(isset($_POST['newtopic']) && !empty($_POST['top_name']) && !empty($_POST['top_obj'])){
 			//echo "entrou no if do topico";
-			date_default_timezone_set ( "America/Sao_Paulo" );
-			$topic = new Topico(array(
+			date_default_timezone_set ( "America/Sao_Paulo" );  //OBS: antes de cadastrar direto no banco eu devo enviar para o adm aprovar
+			$topic = new Topico(array( //
 				'top_name' => antiInject($_POST['top_name']),
 				'top_obj' => antiInject($_POST['top_obj']),
 				'top_date' => date('Y-m-d H:i:s', time()),
+				'top_user_id' => $user['id'],
 			));
 			$topic->inserir($topic);
 			redireciona('painel.php?m=forum&t=home');
@@ -156,9 +165,48 @@ switch($tela):
 	break;		
 	case 'cadastro':
 		echo "Hello! I'm the registration screen.";
-	break; 		
+	break;//cadastro
+	case 'profile':
+		?>
+			<header>
+				<h1>Meu perfil</h1>
+			</header>
+			<article>	
+		<?php
+			$user = new usuarios();
+			$sessao = new sessao();
+			$id = $sessao->getVar('loginuser');
+			
+			$user->extrasSelect = "WHERE login='".$id."'";
+			$user->select($user);
+			$user->conecta();
+			$query = "SELECT foto FROM usuarios WHERE login='$id'";
+			$result = mysql_query($query);
+			if($row = mysql_fetch_assoc($result)){
+				if($row['foto'] != ''){
+					echo "<img id='perfil' data-toggle='tooltip' data-placement='right' title='Alterar foto de perfil' class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
+					
+				}
+				else{
+					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
+					echo "<div class='divupload'><input type='file' class='upload'></div>
+					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
+				}	
+			}	
+			while($res = $user->retornaDados()):
+				print "<p><ul>";
+				print "<li><strong>Login:</strong> ".$res->login."</li><br />";	
+				print "<li><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
+				print "<li><strong>Email:</strong> ".$res->email."</li><br />";
+				print "<li><strong>Cadastrou:</strong> ".$res->dataCad."</li><br />";
+				print "</ul></p>";
+			endwhile;
+			?>
+			</article>	
+			<?php
+		break;//profile 		
 	default:
-		echo 'Página não encontrada';
-		break;	
+		echo "<div class='telaerror'></div>";
+		break;//default	
 endswitch;		
 ?>

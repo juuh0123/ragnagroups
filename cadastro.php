@@ -26,9 +26,9 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		if(isset($_POST['cadastrar'])){//cadastrar 
 		//if ($response != null && $response->success) {	
 			$user = new usuarios(array(
-				'nome'=>antiInject($_POST['nome']),
-				'login'=>antiInject($_POST['login']),
-				'email'=>antiInject($_POST['email']),
+				'nome'=>antiInject(strtolower($_POST['nome'])),
+				'login'=>antiInject(strtolower($_POST['login'])),
+				'email'=>antiInject(strtolower($_POST['email'])),
 				'senha'=>codificaSenha($_POST['senha']),
 				'user_dir'=>diretorio($_POST['login']),
 				//'termo'=>($_POST['termo']), na vdd esse campo nao é necessario ainda, pois o usuario só consegue se cadastrar
@@ -72,8 +72,8 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 						rules:{
 							nome:{required:true, minlength:8},
 							email:{required:true, email:true},
-							login:{required:true, minlength:5},
-							senha:{required:true, rangelength:[4,10]},
+							login:{required:true, minlength:6},
+							senha:{required:true, rangelength:[8,12]},
 							senhaconf:{required:true, equalTo:"#senha"},
 							termo:{required:true},
 						}

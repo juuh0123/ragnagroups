@@ -8,7 +8,13 @@
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		<meta name="robots" content="index, follow" />
 		<meta name="google" content="nositelinkssearchbox" />
-		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadCSS('bootstrap');?>
+		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadCSS('bootstrap');loadJS('jquery');?>
+		<script>
+			$(function () {
+			  $('[data-toggle="tooltip"]').tooltip()
+			})
+			$('#perfil').tooltip(options);
+		</script>
 	</head>
 	<body class="painel">
 		<div id="xwrapper">

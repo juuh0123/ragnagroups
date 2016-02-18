@@ -161,12 +161,22 @@ body{
 	clear: both;	
 }
 .upload{
-	width: 120px; height: 120px;
-	background-image: url('../../asset/picture/profile/default.png');
+	
+	opacity:0.0;    -moz-opacity: 0.0;
 	overflow: hidden;	
 }
-.divupload{
-   
+#divupload{
+	width: 120px; height: 120px;
+	background-image: url('../../asset/picture/profile/default.png');
+}
+.telaerror{
+	position: relative;
+	width: 648px;
+	height: 428px;
+	background-image: url('../../asset/image/404.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
 }
 
 }/*FIM 992px*/
