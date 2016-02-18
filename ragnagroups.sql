@@ -4,7 +4,7 @@ DROP DATABASE IF EXISTS ragnagroups;
 CREATE DATABASE  ragnagroups;
 USE ragnagroups;
 
-CREATE TABLE IF NOT EXISTS `boss` (
+CREATE TABLE IF NOT EXISTS `boss` ( /*eu tenho que repensar esta entidade, pois um administrador tbm é um usuarios, logo não há necessidade de criar outra tabela*/
 	boss_id					INT AUTO_INCREMENT PRIMARY KEY,
 	boss_login				VARCHAR(50) UNIQUE NOT NULL,
 	boss_pass				VARCHAR(20) NOT NULL,
@@ -20,6 +20,7 @@ CREATE TABLE IF NOT EXISTS `boss` (
 
 CREATE TABLE IF NOT EXISTS `users`(
 	user_id						INT AUTO_INCREMENT PRIMARY KEY,
+	user_adm					CHAR(2), /*s ou n, se o usuario é um administrador ou nao*/
 	user_login					VARCHAR(50) UNIQUE NOT NULL,
 	user_name				VARCHAR(50) NOT NULL,
 	user_pass					VARCHAR(50) NOT NULL,

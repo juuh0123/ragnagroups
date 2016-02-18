@@ -20,7 +20,6 @@ Class Topico extends Base{
 				$this->camposValores = $campos;
 			endif;
 		}//construct
-	
 }
 
 ?>

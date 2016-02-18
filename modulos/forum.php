@@ -107,7 +107,7 @@ switch($tela):
 				?>
 				    <tr>
 					<span>
-						<td><h4><a href="#"><?php echo ucfirst($res->top_name)?></a></h4>
+						<td><h4><a href="?m=topico&t=<?php print $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
 							<span><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
 					</span>
@@ -115,6 +115,7 @@ switch($tela):
 				<?php
 			endwhile;
 			echo "</table></article>";
+			mysql_close();
 		break;//HOME
 	case 'logoff':
 		  	$user = new usuarios();
@@ -155,7 +156,7 @@ switch($tela):
 			<form class="form-group formnewtopic" method="post">
 				<label>Título</label><br />
 				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required>
-				<label>Objetivo</label><br />
+				<label>Descrição</label><br />
 				<textarea class="form-control newinput"  name="top_obj" maxlength="400" rows="3" required></textarea>
 				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
 			</form>
