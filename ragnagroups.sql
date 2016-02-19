@@ -39,9 +39,11 @@ CREATE TABLE IF NOT EXISTS `topics`(
 	top_user_id (ce)	VARCHAR(50) NOT NULL, /*nome do autor do topico ou login*/
 	top_name				VARCHAR(100) NOT NULL UNIQUE, /*o nome do topico deve ser unico, caso tenha algo relacionado o mesmo deve ser um post dentro do topico */
 	top_obj 					VARCHAR(100) NOT NULL, /*esse campo vai ser a descrição dada pelo usuário no momento em ele criar o topico, vai conter a descrição*/
+	top_user_name		VARCHAR
 	//top_post				VARCHAR NOT NULL, /*esse campo deve conter todos posts, perguntas, respostas relacionados aos topicos, onde deve pegar o login/id do usario que comentar*/
 	//top_container		VARCHAR NOT NULL, /*esse campo deve pegar todo conteudo do topico, ou seja, listar todos pots, caso queira pegar os posts daquele topico uso o campo topPost*/
 	top_date				TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00' /*data de criação do topico*/
+	top_status				BOOLEAN /*esse campo vai ter como padrão false ele é responsável  por se aprovador ou nao pelo admini*/
 );
 
 CREATE TABLE IF NOT EXISTS `posts`( /*cada post deve estar atrelado à um tópico.*/

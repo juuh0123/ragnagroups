@@ -196,4 +196,12 @@ a:hover{text-decoration: none !important;}
     border-left-color: #ce4844;
     border-radius: 3px;
 }
+.isadmin{
+	color: #ce4844;
+}
+.list-user-picture{
+	position: relative;
+	clear: both;
+}
+
 }/*FIM 992px*/

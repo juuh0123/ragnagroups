@@ -31,6 +31,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 				'email'=>antiInject(strtolower($_POST['email'])),
 				'senha'=>codificaSenha($_POST['senha']),
 				'user_dir'=>diretorio($_POST['login']),
+				'ip'=> ($_SERVER['REMOTE_ADDR']),
 				//'termo'=>($_POST['termo']), na vdd esse campo nao é necessario ainda, pois o usuario só consegue se cadastrar
 				'ativo'=>'s',//se o checkbox termos de uso estiver ativo, mas se ele entrar sem js ativo nao consigo ter provas de que
 				'dataCad'=>date('Y-m-d H:i:s')//ele concordou com os termos, ele poderia alegar que o site apresentou erro e ele nao
@@ -72,7 +73,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 						rules:{
 							nome:{required:true, minlength:8},
 							email:{required:true, email:true},
-							login:{required:true, minlength:6},
+							login:{required:true, minlength:4},
 							senha:{required:true, rangelength:[8,12]},
 							senhaconf:{required:true, equalTo:"#senha"},
 							termo:{required:true},

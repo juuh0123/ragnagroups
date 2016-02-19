@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(dirname(__FILE__))."/funcoes.php");
+include_once(dirname(dirname(__FILE__))."/funcoes.php");
 protegeArquivo(basename(__FILE__));
 loadCSS('style');
 loadJS('geral');
@@ -69,11 +69,16 @@ switch($tela):
 	break;
 	case 'home':
 			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic' id='btnnew'>Novo Tópico</a>";
-			//$timeLine->select($timeLine);
+			#instanciar as classes
 			$timeline = new Topico();
 			$user = new usuarios();	
 			$sessao = new sessao();
 			$id = $sessao->getVar('loginuser');
+			
+			$admin = null;
+			
+			
+			if($id == "admin")$admin = "[ADM] -";
 			$nome = ucwords($sessao->getVar('nomeuser'));
 			$user->conecta();
 			$query = "SELECT foto FROM usuarios WHERE login='$id'";
@@ -81,19 +86,18 @@ switch($tela):
 			if($row = mysql_fetch_assoc($result)){
 				if($row['foto'] != ''){
 					$profile = "<a href='?m=forum&t=profile'><img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
-					<p><span>$nome</span></p></a>";
-					
+					<p><span class='isadmin'>$admin</span> $nome</p></a>";
 				}
 				else{
 					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
 					$profile = "<div id='divupload'><input type='file' class='upload'></div>
-					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
+					<p><span><a href='?m=forum&t=profile'>$admin $nome</a></span></p>";
 				}	
 			}
 			//$user->extrasSelect = "foto FROM usuarios WHERE login='".$sessao->getVar('loginuser');
 			//print $sessao->getVar('loginuser');
 			//$user->selectCampos($user);
-			$timeline->extrasSelect = "ORDER BY top_date DESC;";
+			$timeline->extrasSelect = " WHERE top_status = true ORDER BY top_date DESC;";
 			$timeline->select($timeline);
 			?>
 				<div class="photo profile">
@@ -107,8 +111,8 @@ switch($tela):
 				?>
 				    <tr>
 					<span>
-						<td><h4 class="top_name"><a href="?m=topico&t=<?php print $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
-								<span class="top_user_name"><h5>Criado por <?php echo "<a href='?m=forum&t=profile'>$res->top_user_name</a>";?></h5></span>
+						<td><h4 class="top_name"><a href="?m=topico&t=<?php echo $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
+								<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=forum&t=profile'>$res->top_user_name</a>";?></h5></span>
 							<span class="top_obj"><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
 					</span>
@@ -140,9 +144,11 @@ switch($tela):
 				'top_obj' => antiInject($_POST['top_obj']),
 				'top_date' => date('Y-m-d H:i:s', time()),
 				'top_user_id' => $user['id'],
-				'top_user_name'=> $sessao->getVar('nomeuser'),
+				'top_user_name'=> ($sessao->getVar('nomeuser')),
 			));
-			$topic->inserir($topic);
+			$topic->inserir($topic); #envia para o adm aprovar, ou seja, não persisto no banco ainda.
+			#NAO NAO NAO, esse jeito a cima é mais dificil...segue a lógica..Eu persisto no bd, só que só exibo se o adm aprovar, caso
+			#ele recuse, ou seja, cancelarsolicitação de topico, eu já excluo pelo id do mesmo. Perfeito
 			redireciona('painel.php?m=forum&t=home');
 		}
 		}//try
@@ -174,9 +180,6 @@ switch($tela):
 		</div>
 		<?php
 	break;		
-	case 'cadastro':
-		echo "Hello! I'm the registration screen.";
-	break;//cadastro
 	case 'profile':
 		?>
 			<header>
@@ -204,12 +207,14 @@ switch($tela):
 				}	
 			}	
 			while($res = $user->retornaDados()):
-				print "<p class='text-muted'><ul>";
+				echo "<p class='text-muted'><ul>";
 				//print "<li><strong>Login:</strong> ".$res->login."</li><br />";	
-				print "<li class='text-muted'><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
-				print "<li class='text-muted'><strong>Email:</strong> ".$res->email."</li><br />";
-				print "<li class='text-muted'><strong>Desde:</strong> ".$res->dataCad."</li><br />";
-				print "</ul></p>";
+				echo "<li class='text-muted'><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
+				echo "<li class='text-muted'><strong>Email:</strong> ".$res->email."</li><br />";
+				echo "<li class='text-muted'><strong>Tópicos:</strong></li><br />";
+				echo "<li class='text-muted'><strong>Posts:</strong></li><br />";
+				echo "<li class='text-muted'><strong>Desde:</strong> ".$res->dataCad."</li><br />";
+				echo "</ul></p>";
 			endwhile;
 			?>
 			</article>	

@@ -64,6 +64,7 @@ ul{display: inline-block;}
 	height: 200px;
 	color: white;
 	position: absolute;
+	
 }
 .footer p{text-align: center;}
 .footer nav ul{
@@ -71,5 +72,6 @@ ul{display: inline-block;}
 	float: left;
 	font-size: 1.1em;
 	margin-left: 20%;
+	bottom: 0;
 }
 
