@@ -68,7 +68,7 @@ switch($tela):
 			endif;
 	break;
 	case 'home':
-			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic'>Novo Tópico</a>";
+			echo "<a href='?m=forum&t=newtopic' class='btn btn-primary newtopic' id='btnnew'>Novo Tópico</a>";
 			//$timeLine->select($timeLine);
 			$timeline = new Topico();
 			$user = new usuarios();	
@@ -80,8 +80,8 @@ switch($tela):
 			$result = mysql_query($query);
 			if($row = mysql_fetch_assoc($result)){
 				if($row['foto'] != ''){
-					$profile = "<img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
-					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
+					$profile = "<a href='?m=forum&t=profile'><img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
+					<p><span>$nome</span></p></a>";
 					
 				}
 				else{
@@ -95,20 +95,21 @@ switch($tela):
 			//$user->selectCampos($user);
 			$timeline->extrasSelect = "ORDER BY top_date DESC;";
 			$timeline->select($timeline);
-			
 			?>
 				<div class="photo profile">
-					<section><?php echo $profile; ?><p>
-						<?php $user->extrasSelect = "WHERE login='".$sessao->getVar('loginuser')?></p></section><!--src=''-->
+					<section><?php echo $profile; ?>
+					<p><?php $user->extrasSelect = "WHERE login='".$sessao->getVar('loginuser')?></p></section><!--src=''-->
 				</div>
 			<?php
 			echo "<article class='topiclist'><table class='table table-striped'>";
+			
 			while($res = $timeline->retornaDados()):
 				?>
 				    <tr>
 					<span>
-						<td><h4><a href="?m=topico&t=<?php print $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
-							<span><?php echo ucfirst($res->top_obj)?></span>
+						<td><h4 class="top_name"><a href="?m=topico&t=<?php print $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
+								<span class="top_user_name"><h5>Criado por <?php echo "<a href='?m=forum&t=profile'>$res->top_user_name</a>";?></h5></span>
+							<span class="top_obj"><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
 					</span>
 					</tr>
@@ -139,6 +140,7 @@ switch($tela):
 				'top_obj' => antiInject($_POST['top_obj']),
 				'top_date' => date('Y-m-d H:i:s', time()),
 				'top_user_id' => $user['id'],
+				'top_user_name'=> $sessao->getVar('nomeuser'),
 			));
 			$topic->inserir($topic);
 			redireciona('painel.php?m=forum&t=home');
@@ -150,7 +152,15 @@ switch($tela):
 		?>
 		<div class="newtopic">
 			<header>
-				<h1>Criar um novo tópico</h1>
+				<h1>Criar novo tópico</h1>
+				<section class="topiclaw">
+					<p class="text-muted"><strong>Leia com atenção: </strong>Antes de criar um novo tópico elabore um <mark>Título</mark> que seja abrangente,
+					que englobe todo um contexto, assunto ou discussão.</p>
+					<p class="text-muted"><strong>Exemplo:</strong> Quests, ou seja, se eu não estou especificando qual a quest, este tópico será responsável por englobar
+					todas as quests do jogo. Outros exemplos seriam: Guia do Up!, PVP, WOE, Venda e Compra de equipamentos, etc.</p>
+					<p class="text-muted"><strong>OBS: </strong>Erros de Português não serão aceitos no <mark>Título</mark> ou <mark>Descrição</mark> do Tópico.</p>
+					<p class="text-danger"><strong>A criação de Tópicos passa pela aprovação do Adminitrador, sendo assim, o tópico criado não aparecerá no mesmo instante.</strong></p>
+				</section>
 			</header>
 			<article>
 			<form class="form-group formnewtopic" method="post">
@@ -184,22 +194,21 @@ switch($tela):
 			$query = "SELECT foto FROM usuarios WHERE login='$id'";
 			$result = mysql_query($query);
 			if($row = mysql_fetch_assoc($result)){
-				if($row['foto'] != ''){
+				if($row['foto'] != null){
 					echo "<img id='perfil' data-toggle='tooltip' data-placement='right' title='Alterar foto de perfil' class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
 					
 				}
 				else{
 					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
-					echo "<div class='divupload'><input type='file' class='upload'></div>
-					<p><span><a href='?m=forum&t=profile'>$nome</a></span></p>";
+					echo "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;'>";
 				}	
 			}	
 			while($res = $user->retornaDados()):
-				print "<p><ul>";
-				print "<li><strong>Login:</strong> ".$res->login."</li><br />";	
-				print "<li><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
-				print "<li><strong>Email:</strong> ".$res->email."</li><br />";
-				print "<li><strong>Cadastrou:</strong> ".$res->dataCad."</li><br />";
+				print "<p class='text-muted'><ul>";
+				//print "<li><strong>Login:</strong> ".$res->login."</li><br />";	
+				print "<li class='text-muted'><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
+				print "<li class='text-muted'><strong>Email:</strong> ".$res->email."</li><br />";
+				print "<li class='text-muted'><strong>Desde:</strong> ".$res->dataCad."</li><br />";
 				print "</ul></p>";
 			endwhile;
 			?>

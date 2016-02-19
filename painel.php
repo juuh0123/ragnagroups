@@ -13,7 +13,15 @@ if(isset($_GET['t'])):
 	 $tela = $_GET['t'];
 else:
 	$tela = "";
-endif; 		
+endif;
+#Em análise para adentrar no perfil do usuarios, ex: m=forum&t=profile/Gustavo-Vieira ou posso simplesmente criar um novo modulo
+#com nome de profile e mandar pra lá ao invés de forum, ai ficar assim m=profile&t=Gustavo-Vieira
+if(isset($_GET['/'])):
+	$profile = $_GET['/'];
+else:
+	$profile = "";
+endif;
+#		 		
 ?>
 <div id="content">
 	<?php 

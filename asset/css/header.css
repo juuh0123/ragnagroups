@@ -160,9 +160,14 @@ body{
 	float: left;
 	clear: both;	
 }
+.img-thumbnail{
+	background-repeat: no-repeat;
+	background-size: cover;
+    background-position: center;
+}
 .upload{
-	
-	opacity:0.0;    -moz-opacity: 0.0;
+	opacity:0.0;    
+	-moz-opacity: 0.0;
 	overflow: hidden;	
 }
 #divupload{
@@ -178,5 +183,17 @@ body{
 	background-size: cover;
     background-position: center;
 }
-
+a:hover{text-decoration: none !important;}
+.top_name{position: relative; float: left; clear: both;}
+.top_user_name{position: relative;float: right;}
+.top_obj{float:left; position: relative; clear:both;}
+#btnnew:hover{background: #00b33c !important; border: 1px solid  #00b33c !important;}
+.topiclaw{
+	padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-left-color: #ce4844;
+    border-radius: 3px;
+}
 }/*FIM 992px*/

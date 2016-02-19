@@ -19,13 +19,10 @@ if(isset($tela)):
 	$query = "SELECT post_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row";
 	//echo $query; die();
 	$result = mysql_query($query);
-	
-	if(empty($result)) print 'VAZIO';
-	
-	#$res = $topico->retornaDados();
-	if($topico and !empty($result)):
-		
 	echo "<h1>$tela</h1><br /><h4></h4>";	
+	#if(empty($result)) print 'VAZIO';
+	#$res = $topico->retornaDados();
+	if($topico and !empty($result) and mysql_num_rows($result) > 0){
 	echo "<article class='topiclist'><table class='table table-striped'>";	
 	//while($res = $topico->retornaDados()):
 	while($res = mysql_fetch_assoc($result)):
@@ -40,7 +37,10 @@ if(isset($tela)):
 		</tr>
 		<?php
 	endwhile;
-	endif;		
+	}else{
+		echo 'Não há post\'s para este tópico';
+	}
+				
 	echo "</table></article>";
 endif;//if inicial	
 	
