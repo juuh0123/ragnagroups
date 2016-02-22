@@ -32,7 +32,7 @@
 			</section>
 			<footer>
 				<small><p>© Copyright 2015, Desenvolvido por <a href="#" class="copyright" target="_blank">Daniel Vieira Junior</a> - Todos os direitos reservados.
-					<br/><textNode>É proibida a reprodução total ou parcial de qualquer conteúdo deste site.</textNode></p>		
+					<br/><textNode>É proibida a reprodução total ou parcial de qualquer conteúdo deste site.</textNode><a href="#">Direitos autorais.</a></p>		
 				</small>
 			</footer>
 		</div><!--wrap-->

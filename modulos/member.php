@@ -5,7 +5,6 @@ protegeArquivo(basename(__FILE__));
 		$user = new usuarios();
 		$user->extrasSelect = 'ORDER BY nome ASC';
 		$user->select($user);
-		
 		echo "<div class='list-user-content'>";
 		while ($res = $user->retornaDados()) {
 			echo "<div class='list-user-child'>";
@@ -15,5 +14,4 @@ protegeArquivo(basename(__FILE__));
 		}
 		echo "</div>";
 	}
-	
 ?>

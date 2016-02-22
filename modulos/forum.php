@@ -173,7 +173,7 @@ switch($tela):
 				<label>Título</label><br />
 				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required>
 				<label>Descrição</label><br />
-				<textarea class="form-control newinput"  name="top_obj" maxlength="400" rows="3" required></textarea>
+				<textarea class="form-control newinput"  name="top_obj" maxlength="1000" rows="3" required></textarea>
 				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
 			</form>
 			</article>
@@ -199,7 +199,6 @@ switch($tela):
 			if($row = mysql_fetch_assoc($result)){
 				if($row['foto'] != null){
 					echo "<img id='perfil' data-toggle='tooltip' data-placement='right' title='Alterar foto de perfil' class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
-					
 				}
 				else{
 					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
