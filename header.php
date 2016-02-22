@@ -8,7 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="index, follow" />
 		<meta name="google" content="nositelinkssearchbox" />
-		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadCSS('bootstrap');loadJS('bootstrap');loadJS('jquery');?>
+		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadJS('jquery');loadCSS('bootstrap');loadJS('bootstrap');?>
 		<script>
 			$(function () {
 			  $('[data-toggle="tooltip"]').tooltip()
