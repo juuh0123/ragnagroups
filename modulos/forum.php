@@ -74,29 +74,23 @@ switch($tela):
 			$user = new usuarios();	
 			$sessao = new sessao();
 			$id = $sessao->getVar('loginuser');
+			$admin = '<span>';
 			
-			$admin = null;
-			
-			
-			if($id == "admin")$admin = "[ADM] -";
+			if($id == "admin") $admin = "<span class='isadmin'>";
 			$nome = ucwords($sessao->getVar('nomeuser'));
 			$user->conecta();
 			$query = "SELECT foto FROM usuarios WHERE login='$id'";
 			$result = mysql_query($query);
 			if($row = mysql_fetch_assoc($result)){
 				if($row['foto'] != ''){
-					$profile = "<a href='?m=forum&t=profile'><img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
-					<p><span class='isadmin'>$admin</span> $nome</p></a>";
+					$profile = "<a href='?m=profile&t=$nome'><img class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>
+					<p>$admin $nome</span></p></a>";
 				}
 				else{
-					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
 					$profile = "<div id='divupload'><input type='file' class='upload'></div>
-					<p><span><a href='?m=forum&t=profile'>$admin $nome</a></span></p>";
+					<p><span><a href='?m=profile&t=$nome'>$admin $nome</a></span></p>";
 				}	
 			}
-			//$user->extrasSelect = "foto FROM usuarios WHERE login='".$sessao->getVar('loginuser');
-			//print $sessao->getVar('loginuser');
-			//$user->selectCampos($user);
 			$timeline->extrasSelect = " WHERE top_status = true ORDER BY top_date DESC;";
 			$timeline->select($timeline);
 			?>
@@ -106,13 +100,13 @@ switch($tela):
 				</div>
 			<?php
 			echo "<article class='topiclist'><table class='table table-striped'>";
-			
+			#timeline - homepage
 			while($res = $timeline->retornaDados()):
 				?>
 				    <tr>
 					<span>
 						<td><h4 class="top_name"><a href="?m=topico&t=<?php echo $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
-								<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=forum&t=profile'>$res->top_user_name</a>";?></h5></span>
+								<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=profile&t=$res->top_user_name'>$res->top_user_name</a>";?></h5></span>
 							<span class="top_obj"><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
 					</span>
@@ -136,24 +130,21 @@ switch($tela):
 		$user = mysql_query($query);
 		$user = mysql_fetch_assoc($user);
 		try{ 
-		if(isset($_POST['newtopic']) && !empty($_POST['top_name']) && !empty($_POST['top_obj'])){
-			//echo "entrou no if do topico";
-			date_default_timezone_set ( "America/Sao_Paulo" );  //OBS: antes de cadastrar direto no banco eu devo enviar para o adm aprovar
-			$topic = new Topico(array( //
-				'top_name' => antiInject($_POST['top_name']),
-				'top_obj' => antiInject($_POST['top_obj']),
-				'top_date' => date('Y-m-d H:i:s', time()),
-				'top_user_id' => $user['id'],
-				'top_user_name'=> ($sessao->getVar('nomeuser')),
-			));
-			$topic->inserir($topic); #envia para o adm aprovar, ou seja, não persisto no banco ainda.
-			#NAO NAO NAO, esse jeito a cima é mais dificil...segue a lógica..Eu persisto no bd, só que só exibo se o adm aprovar, caso
-			#ele recuse, ou seja, cancelarsolicitação de topico, eu já excluo pelo id do mesmo. Perfeito
-			redireciona('painel.php?m=forum&t=home');
-		}
+			if(isset($_POST['newtopic']) && !empty($_POST['top_name']) && !empty($_POST['top_obj'])){
+				date_default_timezone_set ( "America/Sao_Paulo" ); 
+				$topic = new Topico(array( //
+					'top_name' => antiInject($_POST['top_name']),
+					'top_obj' => antiInject($_POST['top_obj']),
+					'top_date' => date('Y-m-d H:i:s', time()),
+					'top_user_id' => $user['id'],
+					'top_user_name'=> ($sessao->getVar('nomeuser')),
+				));
+				$topic->inserir($topic); 
+				redireciona('painel.php?m=forum&t=home');
+			}
 		}//try
 		catch(exception $e){
-			echo $e->getMessage();
+			echo 'Ocorreu um erro na criação do Tópico, informar ao administrador, Módulo: fórum e linha: 153<br />'.$e->getMessage();
 		}
 		?>
 		<div class="newtopic">
@@ -161,7 +152,7 @@ switch($tela):
 				<h1>Criar novo tópico</h1>
 				<section class="topiclaw">
 					<p class="text-muted"><strong>Leia com atenção: </strong>Antes de criar um novo tópico elabore um <mark>Título</mark> que seja abrangente,
-					que englobe todo um contexto, assunto ou discussão.</p>
+					que englobe todo um contexto, assunto ou discussão. Títulos ou Temas já existentes não serão aprovados.</p>
 					<p class="text-muted"><strong>Exemplo:</strong> Quests, ou seja, se eu não estou especificando qual a quest, este tópico será responsável por englobar
 					todas as quests do jogo. Outros exemplos seriam: Guia do Up!, PVP, WOE, Venda e Compra de equipamentos, etc.</p>
 					<p class="text-muted"><strong>OBS: </strong>Erros de Português não serão aceitos no <mark>Título</mark> ou <mark>Descrição</mark> do Tópico.</p>
@@ -171,54 +162,16 @@ switch($tela):
 			<article>
 			<form class="form-group formnewtopic" method="post">
 				<label>Título</label><br />
-				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required>
+				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required="required" placeholder="Dê um nome ao Tópico">
 				<label>Descrição</label><br />
-				<textarea class="form-control newinput"  name="top_obj" maxlength="1000" rows="3" required></textarea>
+				<textarea class="form-control newinput"  name="top_obj" maxlength="1000" rows="3" required="required" placeholder="Descreva qual objetivo deste tópico, quando ele será usado, o que deve ser postado aqui."></textarea>
 				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
 			</form>
 			</article>
 		</div>
 		<?php
 	break;		
-	case 'profile':
-		?>
-			<header>
-				<h1>Meu perfil</h1>
-			</header>
-			<article>	
-		<?php
-			$user = new usuarios();
-			$sessao = new sessao();
-			$id = $sessao->getVar('loginuser');
-			
-			$user->extrasSelect = "WHERE login='".$id."'";
-			$user->select($user);
-			$user->conecta();
-			$query = "SELECT foto FROM usuarios WHERE login='$id'";
-			$result = mysql_query($query);
-			if($row = mysql_fetch_assoc($result)){
-				if($row['foto'] != null){
-					echo "<img id='perfil' data-toggle='tooltip' data-placement='right' title='Alterar foto de perfil' class='img-thumbnail' src='asset/picture/profile/".$id.'/'.$row['foto']."' style='height:120px; width:120px;'>";
-				}
-				else{
-					//$profile = "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;>";
-					echo "<img class='img-thumbnail' src='asset/picture/profile/default.png' style='height:120px; width:120px;'>";
-				}	
-			}	
-			while($res = $user->retornaDados()):
-				echo "<p class='text-muted'><ul>";
-				//print "<li><strong>Login:</strong> ".$res->login."</li><br />";	
-				echo "<li class='text-muted'><strong>Nome:</strong> ".ucwords($res->nome)."</li><br />";
-				echo "<li class='text-muted'><strong>Email:</strong> ".$res->email."</li><br />";
-				echo "<li class='text-muted'><strong>Tópicos:</strong></li><br />";
-				echo "<li class='text-muted'><strong>Posts:</strong></li><br />";
-				echo "<li class='text-muted'><strong>Desde:</strong> ".$res->dataCad."</li><br />";
-				echo "</ul></p>";
-			endwhile;
-			?>
-			</article>	
-			<?php
-		break;//profile 		
+	
 	default:
 		echo "<div class='telaerror'></div>";
 		break;//default	

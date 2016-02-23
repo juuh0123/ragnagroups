@@ -19,8 +19,5 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 			endif;
 			$this->campoPk = "post_id";	
 		}//construct
-	
-	
 	}// final da classe post
-
 ?>

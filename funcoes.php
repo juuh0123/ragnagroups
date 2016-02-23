@@ -43,7 +43,7 @@
 			if(file_exists(MODULOSPATH. "$modulo.php")):
 				include(MODULOSPATH. "$modulo.php");			
 			else:
-				echo '<p>Módulo inexistente neste sistema!</p>';	
+				echo '<h1>404 Página não encontrada!</h1>';	
 			endif;	
 		endif;	
 	}//loadModulo

@@ -26,6 +26,9 @@ endif;
 <div id="content">
 	<?php 
 		if($modulo && $tela):
+			if($modulo == 'profile'){
+				$tela = antiInject($tela);
+			}
 			loadModulo($modulo, $tela);
 			//echo 'subiu o modulo!';
 		else:

@@ -54,16 +54,16 @@ if(isset($tela)){
 	#traz do bd todos campos do topic
 	$query = "SELECT post_name, post_user_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row ORDER BY post_date DESC";
 	$result = mysql_query($query);
-	echo "<h1>$tela</h1><br /><h4></h4>";	
+	echo "<h1>$tela</h1><br />";
 	if($topico and !empty($result) and mysql_num_rows($result) > 0){
 	echo "<article class='topiclist'><table class='table table-striped'>";	
 	while($res = mysql_fetch_assoc($result)):
-		//echo $res['post_user_name']; die();
+		$username = $res['post_user_name'];
 		?>
 		<tr>
 			<span>
 				<td><h4 class="top_name"><a href="?m=post&t=<?php print $res['post_name'];?>"><?php echo ucfirst($res['post_name']);?></a></h4>
-					<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=forum&t=profile'>".$res['post_user_name']."</a>";?></h5></span>
+					<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=profile&t=$username'>".$username."</a>";?></h5></span>
 					<span class="top_obj"><?php echo ucfirst($res['post_date'])?></span>
 				</td>	
 			</span>
@@ -71,7 +71,7 @@ if(isset($tela)){
 		<?php
 	endwhile;
 	}else{
-		echo 'Não há post\'s para este tópico';
+		echo '<h4>Não há postagens para este tópico. Criei um post, compartilhe seu conhecimento ou sua dúvida :)</h4>';
 	}
 	echo "</table></article>";
 }//if inicial	

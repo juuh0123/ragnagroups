@@ -73,7 +73,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 						rules:{
 							nome:{required:true, minlength:8},
 							email:{required:true, email:true},
-							login:{required:true, minlength:4},
+							login:{required:true, minlength:6},
 							senha:{required:true, rangelength:[8,12]},
 							senhaconf:{required:true, equalTo:"#senha"},
 							termo:{required:true},
