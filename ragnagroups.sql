@@ -32,6 +32,7 @@ CREATE TABLE IF NOT EXISTS `users`(
 	user_post_id	(ce)		VARCHAR(500), /*esse campo é para pegar os id's dos post do usuario*/ 
 	user_topic_id (ce)		VARCHAR(100), /*esse campo deve receber os id's dos tópico do usuário, apenas topicos criados por ele.*/	
 	user_ip						VARCHAR(20) /*guardar os ip's do usuário*/
+	user_term					VARCHAR(5) /*Campo para receber o termo*/
 );
 
 CREATE TABLE IF NOT EXISTS `topics`(

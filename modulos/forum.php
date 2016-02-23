@@ -1,10 +1,14 @@
 <?php
 include_once(dirname(dirname(__FILE__))."/funcoes.php");
 protegeArquivo(basename(__FILE__));
-loadCSS('style');
-loadJS('geral');
+
 switch($tela):
 	case 'login':
+		loadCSS('style');
+		loadJS('geral');
+		loadJS('jquery');
+		loadJS('jquery-validate');
+		loadJS('jquery-validate-messages');
 		//echo 'ola eu sou a tela de login';
 			$sessao = new sessao();
 			//if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):
@@ -19,7 +23,7 @@ switch($tela):
 				if($user->doLogin($user)):
 					redireciona('painel.php?m=forum&t=home');
 				else:
-					redireciona('login.php?erro=2');	
+					redireciona('login.php');	
 					//echo '<div class="erro">Dados incorretos ou usuário inativo.</div>';
 				endif;	
 			endif;
@@ -28,8 +32,8 @@ switch($tela):
 				$(document).ready(function(){
 					$(".userForm").validate({
 						rules:{
-							usuario:{required:true, minlength:3},
-							senha:{required:true, rangelength:[4,10]},
+							usuario:{required:true},
+							senha:{required:true},
 						}
 					});
 				}); 
@@ -37,7 +41,7 @@ switch($tela):
 			<div class="logo">RagnaGroups! LOGO</div>
 			<div class="login-block">
 				<h1>Efetue o login para continuar</h1>
-				<form class="userForm" method="post" action="">
+				<form class="userForm" method="post" action="" name="userForm">
 					<input type="text" size="35" name="usuario" placeholder="Username" id="username" autocomplete="off" autofocus>
 					<input type="password" size="35" name="senha" placeholder="Password" id="password" autocomplete="off">
 					<button name="logar">Entrar</button>

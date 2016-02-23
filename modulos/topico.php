@@ -3,6 +3,11 @@ protegeArquivo(basename(__FILE__));
 ?>
 	<a class="newpostlink" href="#" data-toggle="modal" data-target="#myModal">Criar um novo post</a> 
 	<!--modal -->
+	<!--Eu tenho que validar esse modal, por dois motivos, a tela fica pequena para o usuário 
+	digitar, o certo seria usar um Editor de texto nele, preciso pensar tbm na lógica de como salvar a formmatação, talvez criar uma classe
+	que salve estilos no bd, vai ser foda mas fazer o que, tbm preciso ver como upar imagens se possivel igual ao facebook, onde joga uma url
+	e ele já mostra a imagem, com ctz vou precisar arregaçar no ajax	
+		-->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 	<div class="modal-content">
@@ -34,6 +39,7 @@ protegeArquivo(basename(__FILE__));
 	date_default_timezone_set ( "America/Sao_Paulo" );
 #O objetivo desse modulo é adentrar, exibir o topico e seus posts
 if(isset($_POST['newpost']) and !empty($_POST['posttitle']) and !empty($_POST['postcontent'])){
+	//echo $_POST['postcontent']; die();
 	$post = new Post(array(
 		'post_user_id'=> $sessao->getVar('iduser'),
 		'post_name'=> antiInject($_POST['posttitle']),

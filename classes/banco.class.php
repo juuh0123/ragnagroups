@@ -127,7 +127,7 @@ abstract class banco{
 			endswitch;	
 		}//retornaDados
 		
-		public function executaSQL($sql=null){
+		public function executaSQL($sql=null){	
 			if($sql != null):
 				$query = mysql_query($sql) or $this->trataErro(__FILE__, __FUNCTION__);
 				$this->linhasafetadas = mysql_affected_rows($this->conexao);
@@ -139,7 +139,7 @@ abstract class banco{
 				endif;		
 			else:
 				$this->trataErro(__FILE__,__FUNCTION__,null, 'comando sql nao informado na rotina',FALSE);
-			endif;		
+			endif;
 		}//executaSQL
 		public function trataErro($arquivo=null, $rotina=null, $numero=null, $mensagem=null, $geraExcep=false){
 			if($arquivo==null){

@@ -4,6 +4,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 	if(verificaLogin2()){//valida se o usuário já está logado, se sim, não deve deixa-lo ver a página de cadastro.
 		loadCSS('bootstrap');
 		loadCSS('cad');
+		loadJS('geral');
 		loadJS('jquery');
 		loadJS('jquery-validate');
 		loadJS('jquery-validate-messages');
@@ -22,9 +23,9 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 		}catch(exception $e){
 			echo "Ocorreu um erro de conexão com o ReCaptcha.<p>".$e->getFile()."</p><p>".$e->getLine()."</p><p>".$e->getMessage();	
 		}*/
-			
 		if(isset($_POST['cadastrar'])){//cadastrar 
-		//if ($response != null && $response->success) {	
+		//if ($response != null && $response->success) {
+			trataString(); die();
 			$user = new usuarios(array(
 				'nome'=>antiInject(strtolower($_POST['nome'])),
 				'login'=>antiInject(strtolower($_POST['login'])),
@@ -74,7 +75,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 							nome:{required:true, minlength:8},
 							email:{required:true, email:true},
 							login:{required:true, minlength:6},
-							senha:{required:true, rangelength:[8,12]},
+							senha:{required:true, rangelength:[8,16]},
 							senhaconf:{required:true, equalTo:"#senha"},
 							termo:{required:true},
 						}
@@ -96,7 +97,7 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			  </div>
 			  <div class="form-group">
 			  	<label for="username">Username</label>
-			  	<input type="text" id="username" class="form-control" name="login" placeholder="Enter your username" autocomplete="off">
+			  	<input type="text" id="username" class="form-control" name="login" placeholder="Enter your username" required="required" autocomplete="off">
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">Email address</label>
@@ -104,7 +105,8 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 			  </div>
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">Password</label>
-			    <input type="password" class="form-control" name="senha" id="exampleInputPassword1" placeholder="Password" autocomplete="off">
+			    <input type="password" class="form-control" name="senha" id="exampleInputPassword1" placeholder="Password" autocomplete="off" onkeyup="validPass();">
+			  	<table id="mostra"></table>
 			  </div>
 			  <div class="checkbox">
 			    <label>

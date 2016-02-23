@@ -113,7 +113,7 @@
 		if(!get_magic_quotes_gpc())
 		$string = addslashes($string);//Adiciona barras invertidas a uma string
 		return $string;
-	}
+	}//antiInject
 	function verificaLogin2(){
 		$sessao = new sessao();
 		if($sessao->getNvars() <= 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']){
@@ -127,7 +127,17 @@
 		$path = 'asset/picture/profile/'.$iduser;
 		@mkdir($path, null, true);
 		return $path;
-	}
-
+	}//diretorio
+	function trataString(){
+		$express = "SeuWindowsFazsso?";
+		$ret = '';
+		for($i = 0; $i < strlen($express); $i++){
+			if(ctype_alpha($express[$i])){
+				echo 'O campo nome deve ter apenas letras';
+				exit;
+			}
+		}
+		//Saida: 896
+	}#trataString
 
 ?>

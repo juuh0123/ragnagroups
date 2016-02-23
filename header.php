@@ -11,8 +11,7 @@
 		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadJS('jquery');loadCSS('bootstrap');loadJS('bootstrap');?>
 	</head>
 	<body class="painel">
-		<div id="xwrapper">
-		<header>
+		<header class="cssmenu">
 			<h1>RagnaGroups! Logo</h1>
 			<br />
 			<nav id="cssmenu">
@@ -22,7 +21,6 @@
 					<li><a href="#">Regras</a></li>
 					<li><a href="#">Lorem Ipsum</a></li>
 					<li class="last log"><a href="painel.php?m=forum&t=logoff">log off</a></li>
-				</ul>
-				
+				</ul>	
 			</nav>
 		</header>
