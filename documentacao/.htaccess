@@ -1,0 +1,10 @@
+﻿<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^([a-z]+)/(.*)$ /painel.php?m=$1&t=$2 [NC]
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+  ErrorDocument 404 /painel.php
+</IfModule>
