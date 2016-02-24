@@ -139,5 +139,3 @@
 		}
 		//Saida: 896
 	}#trataString
-
-?>

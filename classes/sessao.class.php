@@ -61,5 +61,3 @@ class sessao{
 	}//metodo printAll
 	
 }//sessao
-
-?>

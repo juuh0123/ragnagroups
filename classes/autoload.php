@@ -6,4 +6,3 @@
 		$classe = str_replace('..', '', $classe);
 		require_once(dirname(__FILE__)."/$classe.class.php");
 	}//__autoload
-?>

@@ -143,5 +143,3 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 	else{
 		redireciona('painel.php?m=forum&t=home');
 	}	
-	
-?>

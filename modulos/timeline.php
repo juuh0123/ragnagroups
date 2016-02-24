@@ -21,5 +21,3 @@ switch($tela){
 		<?php
 	break;	
 }
-
-?>

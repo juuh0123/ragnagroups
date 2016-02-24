@@ -203,5 +203,14 @@ a:hover{text-decoration: none !important;}
 	position: relative;
 	clear: both;
 }
+.comment{
+	margin-left: 40px !important;
+}
+.comment h4{
+	padding-left: 18px;
+}
+.form-horizontal{
+	width: 70% !important;
+}
 
 }/*FIM 992px*/

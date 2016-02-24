@@ -1,11 +1,9 @@
-<?php require_once((dirname(__FILE__))."/funcoes.php");?> 
-<!--NESSA CLASSE EU PRECISO VALIDAR SE A SESSAO JÁ ESTA ABERTA SE SIM MANDO PARA O FORUM SENAO PARA LOGIN AS DUAS VAO SE TELAS DENTRO DO FORUM.PHP-->
-<!DOCTYPE>
+<!DOCTYPE html>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title>Ragnagroups</title>
-		<?php loadCSS('login'); loadCSS('bootstrap');?>
+		<?php require_once((dirname(__FILE__))."/funcoes.php");loadCSS('login');loadCSS('bootstrap');?>
 	</head>
 	<body>
 		<?php 
@@ -15,8 +13,7 @@
 				loadModulo('forum','login');
 			else:
 				loadModulo('forum','home');
-			endif;
-		?>
+			endif;?>
 		<footer>
 			<small><p>© Copyright 2015, Desenvolvido por <a href="#" class="copyright" target="_blank">Daniel Vieira Junior</a> - Todos os direitos reservados.</p></small>
 		</footer> 

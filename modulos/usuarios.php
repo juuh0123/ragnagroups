@@ -73,6 +73,4 @@ loadCSS('login');
 		default:
 			echo '<p>A tela solicita não existe.</p>';
 			break;		
-	endswitch;	 
-
-?>
+	endswitch;

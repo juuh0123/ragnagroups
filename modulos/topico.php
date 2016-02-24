@@ -81,4 +81,3 @@ if(isset($tela)){
 	}
 	echo "</table></article>";
 }//if inicial	
-?>

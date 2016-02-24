@@ -31,4 +31,3 @@
 			endif;
 		}//getValor
 	}//fim da classe Base
-?>

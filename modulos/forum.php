@@ -1,7 +1,6 @@
 <?php
 include_once(dirname(dirname(__FILE__))."/funcoes.php");
 protegeArquivo(basename(__FILE__));
-
 switch($tela):
 	case 'login':
 		loadCSS('style');
@@ -26,8 +25,7 @@ switch($tela):
 					redireciona('login.php');	
 					//echo '<div class="erro">Dados incorretos ou usuário inativo.</div>';
 				endif;	
-			endif;
-			?>	
+			endif;?>	
 			<script type="text/javascript">
 				$(document).ready(function(){
 					$(".userForm").validate({
@@ -175,9 +173,7 @@ switch($tela):
 		</div>
 		<?php
 	break;		
-	
 	default:
 		echo "<div class='telaerror'></div>";
 		break;//default	
 endswitch;		
-?>

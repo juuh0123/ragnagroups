@@ -156,5 +156,3 @@ abstract class banco{
 			if($geraExcep == false): echo($resultado); else: die($resultado); endif;
 		}//trataErro
 	}//fim da classe banco
-
-?>

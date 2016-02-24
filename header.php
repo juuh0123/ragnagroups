@@ -8,6 +8,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="robots" content="index, follow">
 		<meta name="google" content="nositelinkssearchbox">
+		<script src="asset/js/ckeditor/ckeditor.js"></script>
 		<?php loadCSS('reset');loadCSS('header');loadCSS('style');loadJS('jquery');loadCSS('bootstrap');loadJS('bootstrap');?>
 	</head>
 	<body class="painel">

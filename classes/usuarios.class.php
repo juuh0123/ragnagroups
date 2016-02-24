@@ -65,4 +65,3 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 		}//existeRegistro
 		
 	}//fim da classe de Usuarios
-?>

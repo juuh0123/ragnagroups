@@ -15,7 +15,6 @@ define("DBNAME", "ragnagroups");
 //diretório do sistema Esse arquivo está livre a acesso direto por enquanto, ao protegerArquivo gera erro
 //require_once('funcoes.php'); //dizendo que o BASEPATH not defined.
 //protegeArquivo(basename(__FILE__));
-?>
 
 
 

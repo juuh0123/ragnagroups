@@ -21,5 +21,3 @@ Class Topico extends Base{
 			endif;
 		}//construct
 }
-
-?>

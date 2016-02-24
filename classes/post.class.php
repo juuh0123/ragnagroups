@@ -1,6 +1,6 @@
 <?php
-require_once(dirname(__FILE__).'/autoload.php'); //não chamo o funcoes.php, chamo o autoload->funcoes
-protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
+require_once(dirname(__FILE__).'/autoload.php');
+protegeArquivo(basename(__FILE__));
 	
 	class Post extends base{
 		public function __construct($campos=array()){
@@ -20,4 +20,3 @@ protegeArquivo(basename(__FILE__));//tenho que chamar em todas minhas classes
 			$this->campoPk = "post_id";	
 		}//construct
 	}// final da classe post
-?>

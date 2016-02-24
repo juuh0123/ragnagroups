@@ -14,4 +14,3 @@ protegeArquivo(basename(__FILE__));
 		}
 		echo "</div>";
 	}
-?>
