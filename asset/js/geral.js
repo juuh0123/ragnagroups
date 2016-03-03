@@ -72,3 +72,4 @@ function exit(){
 	mostra.style.visibility = "hidden";
 	valid.style.visibility = "hidden";
 }
+

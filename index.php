@@ -1,9 +1,9 @@
-<!DOCTYPE>
+<!DOCTYPE html>
 <html lang="pt-BR">
 	<head>
 		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
 		<title>RagnaGroups | Tudo Sobre Ragnarok :)</title>
-		<meta name="description" content="Ragnagroups, fórum, database, tutoriais, videos, sugestões, sobre, tudo sobre ragnarok">
+		<meta name="description" content="Ragnagroups, ragnarok,fórum, database, tutoriais, videos, sugestões, sobre, tudo sobre ragnarok">
 		<meta name="author" content="Daniel Vieira Junior">
 		<meta name="viewport" content="width=device-width; initial-scale=1.0">
 		<meta name="robots" content="index, follow">
@@ -19,22 +19,22 @@
 						<nav>
 						<ul>
 							<a href="login.php" title="Forum"><li>Fórum</li></a>
-							<a onclick="location.href='painel.php?m=database&t=home'"><li>Database</li></a>
+							<a href="#"><li>Database</li></a>
 							<a href="#"><li>Tutoriais</li></a>
 							<a href="#"><li>Videos</li></a>
 							<a href="#"><li>Sugestões</li></a>
 							<a href="#" id="ultimo"><li>Sobre</li></a>
 						</ul>
 						</nav>
-					</div><!--sidebar-->
-				<div class="shadow"></div><!--shadow-->
+					</div>
+				<div class="shadow"></div>
 				</header>
 			</section>
 			<footer>
 				<small><p>© Copyright 2015, Desenvolvido por <a href="#" class="copyright" target="_blank">Daniel Vieira Junior</a> - Todos os direitos reservados.
-					<br/><textNode>É proibida a reprodução total ou parcial de qualquer conteúdo deste site.</textNode><a href="#">Direitos autorais.</a></p>		
+					<br/><textNode>É proibida a reprodução total ou parcial de qualquer conteúdo deste site.</textNode><a href="#">Direitos autorais.</a></p>
 				</small>
 			</footer>
-		</div><!--wrap-->
+		</div>
 	</body>
 </html>

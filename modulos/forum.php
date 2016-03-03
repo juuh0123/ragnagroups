@@ -8,12 +8,7 @@ switch($tela):
 		loadJS('jquery');
 		loadJS('jquery-validate');
 		loadJS('jquery-validate-messages');
-		//echo 'ola eu sou a tela de login';
 			$sessao = new sessao();
-			//if($sessao->getNvars() > 0 || $sessao->getVar('logado')!= TRUE || $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):
-			// no arquivo login.php eu vou validar se há alguma sessao em aberta, se sim mando para modulo forum tela home
-			//senao mando para forum case login onde valido novamente a senha, para evitar do usuario voltar na tela de login, com 
-			//esse if eu mando para class usuario metodo doLogin que vai criar a sessao e tals e depois manda para o forum home
 			if($sessao->getNvars()==0 && $sessao->getVar('logado') != TRUE && $sessao->getVar('ip') != $_SERVER['REMOTE_ADDR']):	
 				if(isset($_POST['logar']))://logar é do form
 				$user = new usuarios();
@@ -23,7 +18,6 @@ switch($tela):
 					redireciona('painel.php?m=forum&t=home');
 				else:
 					redireciona('login.php');	
-					//echo '<div class="erro">Dados incorretos ou usuário inativo.</div>';
 				endif;	
 			endif;?>	
 			<script type="text/javascript">
@@ -106,12 +100,10 @@ switch($tela):
 			while($res = $timeline->retornaDados()):
 				?>
 				    <tr>
-					<span>
 						<td><h4 class="top_name"><a href="?m=topico&t=<?php echo $res->top_name;?>"><?php echo ucfirst($res->top_name);?></a></h4>
-								<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=profile&t=$res->top_user_name'>$res->top_user_name</a>";?></h5></span>
+							<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=profile&t=$res->top_user_name'>$res->top_user_name</a>";?></h5></span>
 							<span class="top_obj"><?php echo ucfirst($res->top_obj)?></span>
 						</td>	
-					</span>
 					</tr>
 				<?php
 			endwhile;
@@ -146,7 +138,7 @@ switch($tela):
 			}
 		}//try
 		catch(exception $e){
-			echo 'Ocorreu um erro na criação do Tópico, informar ao administrador, Módulo: fórum e linha: 153<br />'.$e->getMessage();
+			echo 'Ocorreu um erro na criação do Tópico, informar ao administrador, Módulo: fórum Tela: Novo Tópico <br />'.$e->getMessage();
 		}
 		?>
 		<div class="newtopic">
@@ -166,7 +158,7 @@ switch($tela):
 				<label>Título</label><br />
 				<input type="text" name="top_name" maxlength="70" class="form-control newinput" required="required" placeholder="Dê um nome ao Tópico">
 				<label>Descrição</label><br />
-				<textarea class="form-control newinput"  name="top_obj" maxlength="1000" rows="3" required="required" placeholder="Descreva qual objetivo deste tópico, quando ele será usado, o que deve ser postado aqui."></textarea>
+				<textarea class="form-control newinput"  name="top_obj" maxlength="1000" rows="3" required="required" placeholder="Descreva qual objetivo deste tópico, quando deve ser usado, o que deve ser postado aqui."></textarea>
 				<button class="btn btn-default" type="submit" name="newtopic">Criar</button>
 			</form>
 			</article>

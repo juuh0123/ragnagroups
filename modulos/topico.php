@@ -17,7 +17,12 @@ protegeArquivo(basename(__FILE__));
         <input type="text" name="posttitle" class="form-control" placeholder="Título do post" required>
       </div>
       <div class="modal-body">
-        <textarea class="form-control" name="postcontent" id="message-text" placeholder="Conteúdo..." required></textarea>
+        <textarea class="form-control" name="postcontent" id="teste" placeholder="Conteúdo..." required rows='15'></textarea>
+        <script>
+                // Replace the <textarea id="editor1"> with a CKEditor
+                // instance, using default configuration.
+                xCKEDITOR.replace('teste');
+		</script>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
@@ -58,7 +63,7 @@ if(isset($tela)){
 		die();
 	} 
 	#traz do bd todos campos do topic
-	$query = "SELECT post_name, post_user_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row ORDER BY post_date DESC";
+	$query = "SELECT post_id, post_name, post_user_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row ORDER BY post_date DESC";
 	$result = mysql_query($query);
 	echo "<h1>$tela</h1><br />";
 	if($topico and !empty($result) and mysql_num_rows($result) > 0){
@@ -68,7 +73,7 @@ if(isset($tela)){
 		?>
 		<tr>
 			<span>
-				<td><h4 class="top_name"><a href="?m=post&t=<?php print $res['post_name'];?>"><?php echo ucfirst($res['post_name']);?></a></h4>
+				<td><h4 class="top_name"><a href="?m=post&t=<?php print $res['post_name'];?>&id=<?php print $res['post_id']?>"><?php echo ucfirst($res['post_name']);?></a></h4>
 					<span class="top_user_name"><h5 class="text-muted">Criado por <?php echo "<a href='?m=profile&t=$username'>".$username."</a>";?></h5></span>
 					<span class="top_obj"><?php echo ucfirst($res['post_date'])?></span>
 				</td>	

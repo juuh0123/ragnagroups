@@ -1,7 +1,7 @@
 <?php require_once((dirname(__FILE__))."/funcoes.php");
 require_once('classes/autoload.php');
 require_once((dirname(__FILE__))."/recaptchalib.php");
-	if(verificaLogin2()){//valida se o usuário já está logado, se sim, não deve deixa-lo ver a página de cadastro.
+	if(verificaLogin2()){
 		loadCSS('bootstrap');
 		loadCSS('cad');
 		loadJS('geral');
@@ -33,10 +33,9 @@ require_once((dirname(__FILE__))."/recaptchalib.php");
 				'senha'=>codificaSenha($_POST['senha']),
 				'user_dir'=>diretorio($_POST['login']),
 				'ip'=> ($_SERVER['REMOTE_ADDR']),
-				//'termo'=>($_POST['termo']), na vdd esse campo nao é necessario ainda, pois o usuario só consegue se cadastrar
-				'ativo'=>'s',//se o checkbox termos de uso estiver ativo, mas se ele entrar sem js ativo nao consigo ter provas de que
-				'dataCad'=>date('Y-m-d H:i:s')//ele concordou com os termos, ele poderia alegar que o site apresentou erro e ele nao
-		));//concordou com nada
+				'ativo'=>'s',
+				'dataCad'=>date('Y-m-d H:i:s')
+		));
 			if($user->existeRegistro('login',$_POST['login'])):
 				printMSG('Este login já está cadastrado, escolha outro nome de usuário.','erro');
 				$duplicado = TRUE;

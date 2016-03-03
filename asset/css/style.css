@@ -28,7 +28,7 @@ body{
 }
 #content h2{
 	font-size: 20px;
-	border-bottom: 1px solid #999;
+	xborder-bottom: 1px solid #999;
 	margin-bottom: 10px;
 }
 .erro, .sucesso, .alerta, .pergunta{
@@ -100,4 +100,20 @@ ul{display: inline-block;}
 .cssmenu{
 	background: white;
 }
-
+.post-container{
+	background: #fff;
+	min-height: 100px;
+	padding-left: 5px;
+	padding-top: 10px;
+}
+.post{
+	width: 80%;	
+	margin: 0 auto;
+	margin-top: 5%;
+}
+.post span{
+	color: #333;
+}
+.post img{
+	width: 120px; height: 120px;
+}
