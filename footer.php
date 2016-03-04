@@ -1,6 +1,9 @@
 <?php require_once("funcoes.php"); 
 protegeArquivo(basename(__FILE__));
-?>				<footer class="footer">
+?>				
+				<span class="img-left"></span>
+				<span class="img-right"></span>
+				<footer class="footer">
 					<p>RagnaGroups &copy;2015 | Todos direitos reservados.</p>
 					<nav>
 						<ul>

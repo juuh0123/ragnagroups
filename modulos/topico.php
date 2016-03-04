@@ -60,7 +60,7 @@ if(isset($tela)){
 	#instancia os obj das classes
 	if(empty($row) or strpos($tela, '\\')){
 		echo '<h1>404 Página não encontrada!</h1>';
-		die();
+		exit;
 	} 
 	#traz do bd todos campos do topic
 	$query = "SELECT post_id, post_name, post_user_name, post_date FROM posts INNER JOIN topics ON posts.post_top_id = topics.top_id WHERE posts.post_top_id =$row ORDER BY post_date DESC";
