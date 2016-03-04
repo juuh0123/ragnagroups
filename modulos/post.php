@@ -23,10 +23,11 @@ if(isset($tela)){
   				echo '<h2>Isto é meio embaraçoso mas este post não existe ou foi removido.</h2>';
 				exit;
   			}	
-  			echo "<div class='post'><img src='asset/picture/profile/".$user['login']."/".$user['foto']."'><header><h3>".$res->post_name.'</h3>';
-			echo '<span><p>Por '.ucwords($res->post_user_name).'</span>';
-			echo '<span> às '.$res->post_date.'</p></span></header>';
-			echo "<div class='post-container'><p class='text-muted'>".$res->post_container.'</p></div><br/></div>';
+  			echo "<div class='post'>";
+  			echo "<img src='asset/picture/profile/".$user['login']."/".$user['foto']."'>";
+  			echo "<header><h3>".$res->post_name."</h3></header>";
+			echo "<span><p>Por ".ucwords($res->post_user_name)." às ".$res->post_date."</p></span>";
+			echo "<div class='post-container'><p class='text-muted'>".$res->post_container."</p></div></div>";
   		}
 	}
 	
@@ -39,17 +40,15 @@ if(isset($tela)){
 			$result = mysql_query($query);
 			$user = mysql_fetch_assoc($result);	
 			if(empty($user)){
-  				echo '<h2>Isto é meio embaraçoso mas este post não existe ou foi removido.</h2>';
+  				echo '<h2>Isto é meio embaraçoso mas este comentário não existe ou foi removido.</h2>';
 				exit;
   			}
-			echo "<div class='coment'><div class='img'><article><img src='asset/picture/profile/".$user['login']."/".$user['foto']."'></div>";
-			echo "<span class='coment-name'><p>".ucwords($user['nome']).'</p></span>';
-			echo "<div class='coment-container'><p class='text-muted'>".$res->com_container.'</p></div>';
-			echo '<span> - '.$res->com_date.'</p></span></article></div>';	
+			echo "<article class='coment'><img src='asset/picture/profile/".$user['login']."/".$user['foto']."'>";
+			echo "<span class='coment-name'>".ucwords($user['nome'])."</span>";
+			echo "<div class='coment-container'><p class='text-muted'>".$res->com_container."</p>";
+			echo "<span class='coment-date'>".$res->com_date."</span></div></article>";	
 		}
 	}
-	
-	
 	?>
 	<article class="comment">
 		<form class="form-horizontal" action="" method="post" id='addcoment'>
@@ -75,6 +74,8 @@ if(isset($tela)){
 				"com_date" => date('Y-m-d H:i:s', time()),
 			));
 			$newcomment->inserir($newcomment);
+			unset($_POST);
+			header('post.php');
 			#instanciar a classe style, para salvar as modificações no ckeditor
 			#gravar no bd o commentario
 			#criar páginação para comentários
