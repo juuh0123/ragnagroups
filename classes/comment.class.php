@@ -4,20 +4,17 @@
 	Class Comment extends Base{
 		public function __construct($campos=array()){
 			parent::__construct();
-			$this->tabela = "comment";
+			$this->tabela = "coments";
 			if(sizeof($campos)<=0):
 				$this->camposValores = array(
-				"nome" => NULL,
-				"email" => NULL,
-				"login" => NULL,
-				"senha" => NULL,
-				"ativo" => NULL,
-				"administrador" => NULL,
-				"dataCad" => NULL,
+				"com_user_id" => NULL,
+				"com_post_id" => NULL,
+				"com_container" => NULL,
+				"com_date" => NULL,
 				);
 			else:
 				$this->camposValores = $campos;
 			endif;
-			$this->campoPk = "id";	
+			$this->campoPk = "com_id";	
 		}//construct
 	}

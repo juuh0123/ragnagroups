@@ -58,14 +58,15 @@ CREATE TABLE IF NOT EXISTS `posts`( /*cada post deve estar atrelado à um tópic
 );
 
 CREATE TABLE IF NOT EXISTS `coments`(/*todo comentario esta contido em um post e a um user, talvez, preciso ver...se há um relaciomento tbm entre os comentarios e os topicos*/
-	com_id					INT AUTO_INCREMENT PRIMARY KEY,
+	com_id				INT AUTO_INCREMENT PRIMARY KEY,
 	com_user_id (ce) 	INT NOT NULL, /*chave estrangeira, identifica o usuário que comentou, quem comentou*/
 	com_post_id (ce) 	INT NOT NULL, /*Chave estrangeira, a qual post pertence/esta atrelado*/
-	com_container 		VARCHAR(500) NOT NULL,  /*Contem a string do comentario, ou seja, o input textArea que o usuario submeter eu vou jogar aqui depois de validar seu conteudo*/
-	com_date				TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'/*quando foi comentado*/
+	com_container 		LONGTEXT NOT NULL,  /*Contem a string do comentario, ou seja, o input textArea que o usuario submeter eu vou jogar aqui depois de validar seu conteudo*/
+	com_date			TIMESTAMP NOT NULL DEFAULT '0000-00-00 00:00:00'/*quando foi comentado*/
 );
 
-CREATE TABLE IF NOT EXISTS `topic_request`(
+CREATE TABLE IF NOT EXISTS `topic_request`( /*já resolvi esse problema, com um campo a mais na 
+tabela topico, status, o adm ao logar vai ver sua lista de aprovações*/
 	req_id /*o id auto incremento da requisicao*/
 	req_user_id  /*quem requisitou, ou seja, quem está solicitando?*/
 	req_topic_obj /*o adm deve receber o obj e ler para saber se é valido ou nao criar um topico para isso*/
