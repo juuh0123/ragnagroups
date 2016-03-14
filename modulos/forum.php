@@ -146,7 +146,7 @@ switch($tela):
 				<h1>Criar novo tópico</h1>
 				<section class="topiclaw">
 					<p class="text-muted"><strong>Leia com atenção: </strong>Antes de criar um novo tópico elabore um <mark>Título</mark> que seja abrangente,
-					que englobe todo um contexto, assunto ou discussão. Títulos ou Temas já existentes não serão aprovados.</p>
+					que englobe todo um contexto, assunto ou discussão. Títulos ou Temas já existentes NÃO serão aprovados.</p>
 					<p class="text-muted"><strong>Exemplo:</strong> Quests, ou seja, se eu não estou especificando qual a quest, este tópico será responsável por englobar
 					todas as quests do jogo. Outros exemplos seriam: Guia do Up!, PVP, WOE, Venda e Compra de equipamentos, etc.</p>
 					<p class="text-muted"><strong>OBS: </strong>Erros de Português não serão aceitos no <mark>Título</mark> ou <mark>Descrição</mark> do Tópico.</p>

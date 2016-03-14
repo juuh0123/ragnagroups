@@ -6,8 +6,8 @@ protegeArquivo(basename(__FILE__));
 	<!--Eu tenho que validar esse modal, por dois motivos, a tela fica pequena para o usuário 
 	digitar, o certo seria usar um Editor de texto nele, preciso pensar tbm na lógica de como salvar a formmatação, talvez criar uma classe
 	que salve estilos no bd, vai ser foda mas fazer o que, tbm preciso ver como upar imagens se possivel igual ao facebook, onde joga uma url
-	e ele já mostra a imagem, com ctz vou precisar arregaçar no ajax	
-		-->
+	e ele já mostra a imagem, com ctz vou precisar arregaçar no ajax e javascript	
+	-->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 	<div class="modal-dialog" role="document">
 	<div class="modal-content">
